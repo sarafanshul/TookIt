@@ -23,8 +23,8 @@ class UserDataRepository( private val userDataDao: UserDataDao ) {
         userDataDao.updateData( data )
     }
 
-    fun getDataById( id : Int ){
-        userDataDao.getDataById(id)
+    fun getDataById( id : Int ) : LiveData<UserData>{
+       return userDataDao.getDataById(id)
     }
 
     suspend fun deleteData( data: UserData ){

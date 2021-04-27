@@ -10,30 +10,45 @@ import com.google.gson.reflect.TypeToken
 class Converters {
 
     @TypeConverter
-    fun fromList(value: List<String>): String {
+    fun fromStringList(value: List<String>): String {
         val gson = Gson()
         val type = object : TypeToken<List<String>>() {}.type
         return gson.toJson(value, type)
     }
 
     @TypeConverter
-    fun toList(value: String): List<String> {
+    fun toStringList(value: String): List<String> {
         val gson = Gson()
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(value, type)
     }
 
     @TypeConverter
-    fun fromTimeList(value: List<Float>): String {
+    fun fromFloatList(value: List<Float>): String {
         val gson = Gson()
         val type = object : TypeToken<List<Float>>() {}.type
         return gson.toJson(value, type)
     }
 
     @TypeConverter
-    fun toTimeList(value: String): List<Float> {
+    fun toFloatList(value: String): List<Float> {
         val gson = Gson()
         val type = object : TypeToken<List<Float>>() {}.type
         return gson.fromJson(value, type)
     }
+
+    @TypeConverter
+    fun fromLongList( value : List<Long> ) : String {
+        val gson = Gson()
+        val type = object : TypeToken<List<Long>>() {}.type
+        return gson.toJson(value, type)
+    }
+
+    @TypeConverter
+    fun toLongList(value: String): List<Long>{
+        val gson = Gson()
+        val type = object : TypeToken<List<Long>>() {}.type
+        return gson.fromJson(value, type)
+    }
+
 }

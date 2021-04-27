@@ -3,10 +3,12 @@ package com.projectdelta.medsapp.ViewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.projectdelta.medsapp.Data.AppDatabase
 import com.projectdelta.medsapp.Data.UserData
 import com.projectdelta.medsapp.Data.UserDataDao
 import com.projectdelta.medsapp.Repository.UserDataRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -28,13 +30,13 @@ class MainViewModel( application: Application ) : AndroidViewModel( application 
     }
 
     fun insertOrUpdate( data : UserData ){
-        GlobalScope.launch {
+        viewModelScope.launch ( Dispatchers.IO ) {
             repository.insertOrUpdate( data )
         }
     }
 
     fun update( data : UserData ){
-        GlobalScope.launch {
+        viewModelScope.launch ( Dispatchers.IO ) {
             repository.update( data )
         }
     }

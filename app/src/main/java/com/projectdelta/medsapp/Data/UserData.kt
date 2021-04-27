@@ -16,7 +16,7 @@ data class UserData (
     val list : MutableList<String> = mutableListOf() ,
 
     @TypeConverters( Converters::class )
-    val timeList : MutableList<Float> = mutableListOf() ,
+    val timeList : MutableList<Long> = mutableListOf() ,
 
     @PrimaryKey
     val id : Int = __id++

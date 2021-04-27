@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.projectdelta.medsapp.Data.UserData
 import com.projectdelta.medsapp.R
+import com.projectdelta.medsapp.Util.fromMilliSecondsToMinutes
+import com.projectdelta.medsapp.Util.fromMilliSecondsToString
 import kotlinx.android.synthetic.main.main_rec_today_layout.view.*
 
 class RecyclerViewTodayAdapter( ) : RecyclerView.Adapter<RecyclerViewTodayAdapter.TodayViewHolder>( ) {
@@ -27,7 +29,7 @@ class RecyclerViewTodayAdapter( ) : RecyclerView.Adapter<RecyclerViewTodayAdapte
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         holder.itemView.apply {
             main_rec_today_tw_list.text = data.list[ position ]
-            main_rec_today_tw_time.text = data.timeList[position].toString()
+            main_rec_today_tw_time.text = fromMilliSecondsToString( data.timeList[position] )
         }
     }
 

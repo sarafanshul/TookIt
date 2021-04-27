@@ -19,15 +19,26 @@ const val CHANNEL_NAME = "channelNAME"
 private var __id = 0
 private var _size = 7 // change to available colors
 val PREPOPULATE_DATA_EX = mutableListOf(
-    UserData("Sunday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Monday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Tuesday",    mutableListOf( "Metformin" , "Amlodipine" , "Metoprolol" , "Omeprazole" )  , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Wednesday",  mutableListOf( "Metformin" , "Amlodipine" , "Metoprolol" , "Omeprazole" )  , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Thursday",   mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Friday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) ),
-    UserData("Saturday",   mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(1F , 3F , 4F , 6F , 10F )  , ( __id++ ) )
+    UserData("Sunday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Monday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Tuesday",    mutableListOf( "Metformin" , "Amlodipine" , "Metoprolol" , "Omeprazole" )  , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Wednesday",  mutableListOf( "Metformin" , "Amlodipine" , "Metoprolol" , "Omeprazole" )  , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Thursday",   mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Friday",     mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) ),
+    UserData("Saturday",   mutableListOf( "Abacavir" , "dolutegravir " , "lamivudine" , "Acyclovir" ) , mutableListOf(100000 , 300000 , 400000 , 600000 , 1000000 )  , ( __id++ ) )
 )
 
 fun createPrePopulateData() : List<UserData>{
     return PREPOPULATE_DATA_EX
 }
+
+
+val DAYS = arrayOf(
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+)

@@ -10,7 +10,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.projectdelta.medsapp.Constant.DATABASE_NAME
 import com.projectdelta.medsapp.Constant.createPrePopulateData
 import com.projectdelta.medsapp.Util.Converters
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
+
 
 @Database(
     entities = [UserData::class] ,
@@ -28,7 +33,6 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            Log.d("INBUILDDATABASE" , "INSTANCE")
             val tempInstance = INSTANCE
             if( tempInstance != null )
                 return tempInstance
@@ -49,6 +53,7 @@ abstract class AppDatabase : RoomDatabase() {
                 override fun onCreate(db: SupportSQLiteDatabase){
                     super.onCreate(db)
                     // pre-populate data
+                     // prepopulate works on a new thread so can return Null if database is not build while required
                     Executors.newSingleThreadExecutor().execute {
                         INSTANCE?.let {
                             it.userDataDao().insertData(createPrePopulateData())
