@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.projectdelta.medsapp.Activity.InfoActivity
 import com.projectdelta.medsapp.Adapter.RecyclerViewMainAdapter
 import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
+import com.projectdelta.medsapp.Data.UserDatabaseManager
 import com.projectdelta.medsapp.Util.RecyclerItemClickListenr
 import com.projectdelta.medsapp.Util.getDate
 import com.projectdelta.medsapp.ViewModel.MainViewModel
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 		mainViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( MainViewModel::class.java )
 
 		setContentView(R.layout.activity_main)
+
+		UserDatabaseManager.context = applicationContext
 
 		setTodayLayout()
 

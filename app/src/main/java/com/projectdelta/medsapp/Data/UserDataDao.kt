@@ -9,6 +9,9 @@ interface UserDataDao {
     @Query( "SELECT * FROM UserData" )
     fun getAll(): LiveData<List<UserData>>
 
+    @Query( "SELECT * FROM UserData" )
+    fun getDatabase(): List<UserData>
+
     @Query( " SELECT * FROM ( SELECT * FROM UserData WHERE id >= :dayValue ORDER BY id ASC ) UNION ALL SELECT * FROM ( SELECT * FROM UserData WHERE id < :dayValue ORDER BY id ASC)" )
     fun getAllByOrder(dayValue : Int): LiveData< List< UserData > >
 

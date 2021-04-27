@@ -20,6 +20,12 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
+    <style name="customAlertDialog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
     <style name="Widget.Theme.MedsApp.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>

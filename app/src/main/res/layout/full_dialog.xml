@@ -40,7 +40,7 @@
 
     <TimePicker
         android:id="@+id/timePicker2"
-        android:layout_width="wrap_content"
+        android:layout_width="259dp"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.MaterialComponents.Light"
         android:timePickerMode="spinner"
@@ -52,6 +52,7 @@
         android:id="@+id/full_dialog_cg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,45 +60,59 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_sunday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Sunday"/>
+            android:text="Sunday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_monday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Monday"/>
+            android:text="Monday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_tuesday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Tuesday"/>
+            android:text="Tuesday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_wednesday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Wednesday"/>
+            android:text="Wednesday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_thursday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Thursday"/>
+            android:text="Thursday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_friday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Friday"/>
+            android:text="Friday" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/full_dialog_cg_saturday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:text="Saturday"/>
+            android:text="Saturday" />
 
 
     </com.google.android.material.chip.ChipGroup>
