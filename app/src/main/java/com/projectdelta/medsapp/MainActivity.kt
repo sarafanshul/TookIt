@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
 		setMainLayout()
 
-		mainViewModel.getAll.observe( this , androidx.lifecycle.Observer { data -> Log.d( "MYDATA" , data.toString() ) } )
-
 	}
 
 	private fun setTodayLayout(){

@@ -15,7 +15,7 @@ import com.projectdelta.medsapp.R
 // https://www.youtube.com/watch?v=eEonjkmox-0
 class SwipeToDelete(
 		var adapter : RecyclerViewInfoAdapter
-) : ItemTouchHelper.SimpleCallback( 0 , ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT ) {
+) : ItemTouchHelper.SimpleCallback( 0 , ItemTouchHelper.LEFT  ) { // ADD "or ItemTouchHelper.RIGHT" for right swipe
 	override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
 		TODO("Implement On Move ?")
 		return false // because dragDirs : 0 (only Left , Right)

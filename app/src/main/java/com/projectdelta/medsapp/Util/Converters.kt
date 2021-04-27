@@ -51,4 +51,18 @@ class Converters {
         return gson.fromJson(value, type)
     }
 
+    @TypeConverter
+    fun fromPairList( value : List<Pair< String , Long>> ) : String {
+        val gson = Gson()
+        val type = object : TypeToken< List< Pair<String , Long> > >() {}.type
+        return gson.toJson(value, type)
+    }
+
+    @TypeConverter
+    fun toPairList(value: String): List<Pair< String , Long>>{
+        val gson = Gson()
+        val type = object : TypeToken< List< Pair<String , Long> > >() {}.type
+        return gson.fromJson(value, type)
+    }
+
 }

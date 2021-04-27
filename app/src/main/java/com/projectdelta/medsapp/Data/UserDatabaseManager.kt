@@ -10,13 +10,12 @@ object UserDatabaseManager {
 	lateinit var context: Context
 
 	fun deleteAllInstances( name : String , time : Long ){
-
+		val DB = AppDatabase.getInstance(context).userDataDao()
 		GlobalScope.launch {
-			val data = AppDatabase.getInstance(context).userDataDao().getDatabase()
-			var newData : MutableList<UserData>
-			for( i in data.indices ){
-				 val ud =  UserData( data[i].day , mutableListOf() , mutableListOf() , data[i].id )
-				// convert to pairs then comeback !
+			val database = DB.getDatabase()
+			for( i in database.indices ){
+				database[i].list.removeAll { it.first == name && it.second == time }
+				DB.updateData( database[i] )
 			}
 		}
 

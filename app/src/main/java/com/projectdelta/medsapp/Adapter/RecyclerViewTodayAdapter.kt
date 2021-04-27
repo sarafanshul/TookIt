@@ -28,8 +28,8 @@ class RecyclerViewTodayAdapter( ) : RecyclerView.Adapter<RecyclerViewTodayAdapte
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         holder.itemView.apply {
-            main_rec_today_tw_list.text = data.list[ position ]
-            main_rec_today_tw_time.text = fromMilliSecondsToString( data.timeList[position] )
+            main_rec_today_tw_list.text = data.list[ position ].first
+            main_rec_today_tw_time.text = fromMilliSecondsToString( data.list[ position ].second )
         }
     }
 

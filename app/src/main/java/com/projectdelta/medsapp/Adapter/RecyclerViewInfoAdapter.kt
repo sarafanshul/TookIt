@@ -37,8 +37,8 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 
 	override fun onBindViewHolder(holder: InfoViewHolder, position: Int) {
 		holder.itemView.apply {
-			info_rv_layout_tw_name.text = data.list[position]
-			info_rv_layout_tw_time.text = fromMilliSecondsToString(data.timeList[position])
+			info_rv_layout_tw_name.text = data.list[position].first
+			info_rv_layout_tw_time.text = fromMilliSecondsToString(data.list[position].second)
 		}
 	}
 
@@ -72,17 +72,16 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 	fun deleteOne( viewHolder: RecyclerView.ViewHolder ){
 		// cache
 		removed_pos = viewHolder.adapterPosition
-		removed_item = this.data.list[removed_pos]
-		removed_time = this.data.timeList[removed_pos]
+		removed_item = this.data.list[removed_pos].first
+		removed_time = this.data.list[removed_pos].second
 
 		this.data.list.removeAt(removed_pos)
-		this.data.timeList.removeAt(removed_pos)
+
 		notifyItemRemoved( removed_pos )
 
 		Snackbar.make( viewHolder.itemView , "$removed_item Removed." ,Snackbar.LENGTH_LONG ).apply {
 			setAction("UNDO") {
-				data.list.add(removed_pos, removed_item)
-				data.timeList.add(removed_pos , removed_time)
+				data.list.add(removed_pos, Pair( removed_item , removed_time ))
 				notifyItemInserted(removed_pos)
 			}
 //			anchorView = viewHolder.itemView.rootView.findViewById(R.id.activity_detailed_info_fab_extract) // for on top of efab
@@ -92,8 +91,8 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 
 	fun deleteAll( viewHolder: RecyclerView.ViewHolder ){
 		removed_pos = viewHolder.adapterPosition
-		removed_item = this.data.list[removed_pos]
-		removed_time = this.data.timeList[removed_pos]
+		removed_item = this.data.list[removed_pos].first
+		removed_time = this.data.list[removed_pos].second
 
 		UserDatabaseManager.deleteAllInstances(removed_item , removed_time)
 	}

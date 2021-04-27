@@ -10,8 +10,6 @@ fun fromMinutesToMilliSeconds( min : Long ) : Long = TimeUnit.MILLISECONDS.conve
 
 fun fromMilliSecondsToString( milli : Long ) : String{
 	val _time = fromMilliSecondsToMinutes(milli)
-	Log.d("MYDATA|TIME" , "${milli}  ${_time.toString()}")
-
 	return "${ _time / 60 }:${ _time % 60 }"
 }
 

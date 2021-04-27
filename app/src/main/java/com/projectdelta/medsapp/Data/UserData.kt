@@ -10,15 +10,12 @@ private var __id : Int = 0
 
 @Entity
 data class UserData (
-    val day : String ,
+    var day : String ,
 
     @TypeConverters( Converters::class )
-    val list : MutableList<String> = mutableListOf() ,
-
-    @TypeConverters( Converters::class )
-    val timeList : MutableList<Long> = mutableListOf() ,
+    val list : MutableList<Pair<String , Long>> = mutableListOf() ,
 
     @PrimaryKey
-    val id : Int = __id++
+    var id : Int = __id++
 
 ) : Serializable

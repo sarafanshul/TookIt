@@ -87,10 +87,9 @@ class InfoActivity : AppCompatActivity() {
 		ids.forEach {
 			infoViewModel.getDataById( it ).observe( this@InfoActivity , androidx.lifecycle.Observer { data ->
 				data.list.forEach {
-					if(it == name) return@Observer
+					if(it.first == name && it.second == fromMinutesToMilliSeconds(minutes) ) return@Observer // not same again
 				}
-				data.list.add( name )
-				data.timeList.add( fromMinutesToMilliSeconds(minutes) )
+				data.list.add( Pair( name , fromMinutesToMilliSeconds(minutes) ) )
 				infoViewModel.update( data )
 			} )
 		}
