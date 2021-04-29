@@ -2,5 +2,7 @@
     <declare-styleable name="FullscreenAttrs">
         <attr name="fullscreenBackgroundColor" format="color" />
         <attr name="fullscreenTextColor" format="color" />
+        <attr name="theme_text" format="color"/>
+        <attr name="theme_text_light" format="color"/>
     </declare-styleable>
 </resources>

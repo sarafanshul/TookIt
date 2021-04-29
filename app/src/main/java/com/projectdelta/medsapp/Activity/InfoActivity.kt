@@ -1,25 +1,17 @@
 package com.projectdelta.medsapp.Activity
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.EditText
-import android.widget.TimePicker
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AlertDialogLayout
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.chip.ChipGroup
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.projectdelta.medsapp.Adapter.RecyclerViewInfoAdapter
 import com.projectdelta.medsapp.Adapter.SwipeToDelete
-import com.projectdelta.medsapp.Constant.DAYS
 import com.projectdelta.medsapp.Data.UserData
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.fromMinutesToMilliSeconds
 import com.projectdelta.medsapp.ViewModel.InfoViewModel
 import kotlinx.android.synthetic.main.activity_info.*
 
@@ -28,6 +20,7 @@ class InfoActivity : AppCompatActivity() {
 	lateinit var adapter: RecyclerViewInfoAdapter
 	lateinit var infoViewModel: InfoViewModel
 	var id : Int = 0
+	val REQUEST_CODE = 101
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -50,53 +43,20 @@ class InfoActivity : AppCompatActivity() {
 
 
 		info_btn_add.setOnClickListener {
-			val dialogLayout = layoutInflater.inflate(R.layout.full_dialog , null)
-			val dialog = AlertDialog.Builder(this , R.style.fullScreenAlertDialog)
-				.setView(dialogLayout)
-				.setPositiveButton("ADD"){_ , _ ->
-					getData(dialogLayout)
-				}
-				.setNegativeButton("Cancel"){_ , _ -> }
-				.create()
-			dialog.show()
+
+			Intent( this , AddEventActivity::class.java ).also{
+				it.putExtra("ID" , id)
+				startActivityForResult(it , REQUEST_CODE)
+			}
 		}
 
 	}
 
-	private fun getData( view : View){
-		val full_dialog_et_name = view.findViewById<EditText>(R.id.full_dialog_et_name)
-		val timePicker2 = view.findViewById<TimePicker>(R.id.timePicker2)
-		val full_dialog_cg = view.findViewById<ChipGroup>(R.id.full_dialog_cg)
-
-		val minutes = timePicker2.hour * 60L + timePicker2.minute
-		val name = full_dialog_et_name.text.toString()
-		val selected = full_dialog_cg.checkedChipIds
-		var ids = mutableListOf<Int>()
-		selected.forEach {
-			when( it ){
-				R.id.full_dialog_cg_sunday -> ids.add( 0 )
-				R.id.full_dialog_cg_monday -> ids.add( 1 )
-				R.id.full_dialog_cg_tuesday -> ids.add( 2 )
-				R.id.full_dialog_cg_wednesday -> ids.add( 3 )
-				R.id.full_dialog_cg_thursday -> ids.add( 4 )
-				R.id.full_dialog_cg_friday -> ids.add( 5 )
-				R.id.full_dialog_cg_saturday -> ids.add( 6 )
-			}
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+		super.onActivityResult(requestCode, resultCode, data)
+		if( resultCode == Activity.RESULT_OK ){
+			Snackbar.make( info_cl , "New Medicine Added !" , Snackbar.LENGTH_LONG ).show()
 		}
-
-		ids.forEach {
-			infoViewModel.getDataById( it ).observe( this@InfoActivity , androidx.lifecycle.Observer { data ->
-				data.list.forEach {
-					if(it.first == name && it.second == fromMinutesToMilliSeconds(minutes) ) return@Observer // not same again
-				}
-				data.list.add( Pair( name , fromMinutesToMilliSeconds(minutes) ) )
-				infoViewModel.update( data )
-			} )
-		}
-
-		Log.d( "MYDATA" , " ${minutes}\n${name}\n${selected.toString()} " )
-
-
 	}
 
 	private fun setView( ){

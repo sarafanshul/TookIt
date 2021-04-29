@@ -18,6 +18,9 @@ interface UserDataDao {
     @Query( "SELECT * FROM UserData WHERE id = :id " )
     fun getDataById( id : Int) : LiveData<UserData>
 
+    @Query( "SELECT * FROM UserData WHERE id = :id " )
+    suspend fun getDataByIdMainThread( id : Int) : UserData
+
     @Query("SELECT * FROM UserData WHERE id == :dayValue")
     fun today(dayValue : Int) : LiveData<UserData>
 

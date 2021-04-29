@@ -1,4 +1,4 @@
-package com.projectdelta.medsapp.Util
+package com.projectdelta.medsapp.Adapter
 
 import android.content.Context
 import android.view.GestureDetector

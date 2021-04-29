@@ -31,4 +31,8 @@ class UserDataRepository( private val userDataDao: UserDataDao ) {
         userDataDao.deleteData( data )
     }
 
+    suspend fun getDataByIdMainThread( id : Int ) : UserData{
+        return userDataDao.getDataByIdMainThread( id )
+    }
+
 }

@@ -10,7 +10,7 @@ fun fromMinutesToMilliSeconds( min : Long ) : Long = TimeUnit.MILLISECONDS.conve
 
 fun fromMilliSecondsToString( milli : Long ) : String{
 	val _time = fromMilliSecondsToMinutes(milli)
-	return "${ _time / 60 }:${ _time % 60 }"
+	return "${ if(_time / 60 < 10) "0"+(_time / 60).toString() else _time / 60 }:${ if(_time % 60 < 10) "0" + (_time % 60).toString() else _time %60 }"
 }
 
 fun getDate() : Int{

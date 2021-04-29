@@ -33,7 +33,7 @@ fun createPrePopulateData() : List<UserData>{
 }
 
 
-val DAYS = arrayOf(
+val WEEKDAYS = arrayOf(
     "Sunday",
     "Monday",
     "Tuesday",

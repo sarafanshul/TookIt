@@ -11,14 +11,14 @@ object UserDatabaseManager {
 
 	fun deleteAllInstances( name : String , time : Long ){
 		val DB = AppDatabase.getInstance(context).userDataDao()
-		GlobalScope.launch {
+		val job = GlobalScope.launch {
 			val database = DB.getDatabase()
 			for( i in database.indices ){
-				database[i].list.removeAll { it.first == name && it.second == time }
-				DB.updateData( database[i] )
+				if( database[i].list.removeAll { it.first == name && it.second == time } )
+					DB.updateData( database[i] ) // update only if removed
 			}
 		}
-
+		GlobalScope.launch { job.join() }
 	}
 
 }

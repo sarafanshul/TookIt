@@ -4,18 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.projectdelta.medsapp.Activity.InfoActivity
 import com.projectdelta.medsapp.Adapter.RecyclerViewMainAdapter
 import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
 import com.projectdelta.medsapp.Data.UserDatabaseManager
-import com.projectdelta.medsapp.Util.RecyclerItemClickListenr
+import com.projectdelta.medsapp.Adapter.RecyclerItemClickListenr
 import com.projectdelta.medsapp.Util.getDate
 import com.projectdelta.medsapp.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,12 +51,17 @@ class MainActivity : AppCompatActivity() {
 			itemOnClickRecyclerView(this@MainActivity , 0)
 		}
 		main_rec_today.addOnItemTouchListener(
-			RecyclerItemClickListenr(this , main_rec_main , object : RecyclerItemClickListenr.OnItemClickListener {
-				override fun onItemClick(view: View, position: Int) {
-					itemOnClickRecyclerView(this@MainActivity, 0) // because today = 0
-				} // to Activity 2
-				override fun onItemLongClick(view: View?, position: Int) {  }
-			}
+			RecyclerItemClickListenr(
+				this,
+				main_rec_main,
+				object :
+					RecyclerItemClickListenr.OnItemClickListener {
+					override fun onItemClick(view: View, position: Int) {
+						itemOnClickRecyclerView(this@MainActivity, 0) // because today = 0
+					} // to Activity 2
+
+					override fun onItemLongClick(view: View?, position: Int) {}
+				}
 			)
 		)
 	}
@@ -76,14 +77,19 @@ class MainActivity : AppCompatActivity() {
 		} )
 
 		main_rec_main.addOnItemTouchListener(
-			RecyclerItemClickListenr(this , main_rec_main , object : RecyclerItemClickListenr.OnItemClickListener {
-				override fun onItemClick(view: View, position: Int) {
-					itemOnClickRecyclerView(this@MainActivity, position)
-				} // to Activity 2
-				override fun onItemLongClick(view: View?, position: Int) {
-					itemLongClickRecyclerView(view , position)
-				} // Changes Subtext
-			}
+			RecyclerItemClickListenr(
+				this,
+				main_rec_main,
+				object :
+					RecyclerItemClickListenr.OnItemClickListener {
+					override fun onItemClick(view: View, position: Int) {
+						itemOnClickRecyclerView(this@MainActivity, position)
+					} // to Activity 2
+
+					override fun onItemLongClick(view: View?, position: Int) {
+						itemLongClickRecyclerView(view, position)
+					} // Changes Subtext
+				}
 			)
 		)
 
