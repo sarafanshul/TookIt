@@ -142,14 +142,6 @@
                 android:layout_weight="0.3"
                 android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:id="@+id/add_event_tw_display"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:paddingRight="10dp"
-                    android:gravity="center"
-                    android:paddingBottom="20dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/add_event_btn_time"
@@ -159,6 +151,16 @@
                     app:iconSize="70dp"
                     app:iconTint="?theme_text_light"
                     android:background="@android:color/transparent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/add_event_tw_display"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:paddingRight="10dp"
+                    android:textColor="?theme_text"
+                    android:gravity="center"
+                    android:paddingBottom="20dp"/>
 
             </LinearLayout>
 

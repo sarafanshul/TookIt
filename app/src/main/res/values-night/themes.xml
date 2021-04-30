@@ -14,6 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="theme_text">@color/white</item>
         <item name="theme_text_light">#B2FFFFFF</item>
+        <item name="colorSecondaryVariantLight">@color/owl_blue_light</item>
+        <item name="colorOther">@color/pastel_green</item>
+
     </style>
 
     <style name="ThemeOverlay.MedsApp.FullscreenContainer" parent="">

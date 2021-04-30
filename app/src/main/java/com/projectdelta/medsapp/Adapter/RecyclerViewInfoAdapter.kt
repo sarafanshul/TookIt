@@ -37,7 +37,7 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 
 	override fun onBindViewHolder(holder: InfoViewHolder, position: Int) {
 		holder.itemView.apply {
-			info_rv_layout_tw_name.text = data.list[position].first
+			info_rv_layout_tw_name.text = data.list[position].first.capitalize()
 			info_rv_layout_tw_time.text = fromMilliSecondsToString(data.list[position].second)
 		}
 	}
@@ -53,7 +53,6 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 		title.apply {
 			text = "Remove item"
 			setPaddingRelative(55 , 30, 0, 0)
-//			gravity = Gravity.CENTER_HORIZONTAL
 			textSize = (resources.getDimension(R.dimen.textMedium))
 		}
 		val dialog = MaterialAlertDialogBuilder(context)
@@ -79,12 +78,13 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 
 		notifyItemRemoved( removed_pos )
 
-		Snackbar.make( viewHolder.itemView , "$removed_item Removed." ,Snackbar.LENGTH_LONG ).apply {
+		Snackbar.make( viewHolder.itemView , "${removed_item.capitalize()} Removed." ,Snackbar.LENGTH_LONG ).apply {
 			setAction("UNDO") {
 				data.list.add(removed_pos, Pair( removed_item , removed_time ))
 				notifyItemInserted(removed_pos)
 			}
-//			anchorView = viewHolder.itemView.rootView.findViewById(R.id.activity_detailed_info_fab_extract) // for on top of efab
+			animationMode = Snackbar.ANIMATION_MODE_SLIDE
+			anchorView = viewHolder.itemView.rootView.findViewById(R.id.info_fab_add) // for on top of efab
 		}.show()
 
 	}
@@ -95,6 +95,11 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 		removed_time = this.data.list[removed_pos].second
 
 		UserDatabaseManager.deleteAllInstances(removed_item , removed_time)
+
+		Snackbar.make( viewHolder.itemView , "${removed_item.capitalize()} Removed from everywhere ! " ,Snackbar.LENGTH_LONG ).apply {
+			animationMode = Snackbar.ANIMATION_MODE_SLIDE
+			anchorView = viewHolder.itemView.rootView.findViewById(R.id.info_fab_add) // for on top of efab
+		}.show()
 	}
 
 }

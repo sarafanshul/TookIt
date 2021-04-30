@@ -12,4 +12,19 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    
+    
+    <color name="owl_yellow">#FFDE03</color>
+    <color name="owl_yellow_dark">#ff7f00</color>
+    <color name="owl_yellow_light">#f9ee3f</color>
+    <color name="owl_yellow_white">#fffee6</color>
+    <color name="text_on_yellow">#000000</color>
+
+    <color name="owl_blue">#0336FF</color>
+    <color name="owl_blue_dark">#0007ef</color>
+    <color name="owl_blue_light">#1565C0</color>
+    <color name="text_on_blue">#ffffff</color>
+
+    <color name="pastel_green">#25ff03</color>
+
 </resources>

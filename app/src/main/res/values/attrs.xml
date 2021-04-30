@@ -4,5 +4,7 @@
         <attr name="fullscreenTextColor" format="color" />
         <attr name="theme_text" format="color"/>
         <attr name="theme_text_light" format="color"/>
+        <attr name="colorSecondaryVariantLight" format="color"/>
+        <attr name="colorOther" format="color"/>
     </declare-styleable>
 </resources>

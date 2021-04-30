@@ -1,5 +1,6 @@
 package com.projectdelta.medsapp.Adapter
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,10 @@ class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.M
         holder.itemView.apply {
             rec_main_tw_1.text = data[position].day
         }
+        if(position % 2 == 0)
+            holder.itemView.foregroundGravity = Gravity.RIGHT or Gravity.CENTER_VERTICAL
+        else
+            holder.itemView.foregroundGravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
     }
 
     fun set( _data : List<UserData> ){
@@ -38,7 +43,6 @@ class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.M
 
     fun skipView(holder: MainViewHolder){
         holder.itemView.apply {
-//            rec_main_cl.visibility = View.GONE
             rec_main_tw_1.visibility = View.GONE
         }
     }

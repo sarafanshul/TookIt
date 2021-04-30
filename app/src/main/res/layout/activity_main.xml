@@ -4,65 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background ="?colorPrimary"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_cl_main"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
         android:layout_width="match_parent"
-        android:layout_margin="3dp"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/main_ll_today"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:id="@+id/main_cw_top"
+            app:cardCornerRadius="8dp"
+            android:animateLayoutChanges="true"
+            android:clickable="true"
+            app:cardElevation="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="?colorSecondary"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/main_tw_today"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:text="Sunday"
-                    android:textSize="60dp" />
+                    android:orientation="horizontal">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/main_tw_int"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="right"
-                    android:text="25"
-                    android:textSize="50dp" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_tw_today"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.95"
+                        android:paddingLeft="4dp"
+                        android:text="Wednesdayyy"
+                        android:textColor="?colorOnSecondary"
+                        android:textSize="50sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/main_tw_int"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right|center_vertical"
+                            android:textColor="?colorOnSecondary"
+                            android:paddingRight="7dp"
+                            android:text="25"
+                            android:textSize="45dp"
+                            android:layout_marginBottom="-8dp"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/main_tw_month"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="May"
+                            android:gravity="center|top"
+                            android:textColor="?colorOnSecondary"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_rec_today"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:textColor="?colorOnSecondary"
+                    android:overScrollMode="never"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_rec_today"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_rec_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            android:layoutAnimation="@anim/layout_animation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_ll_today"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/main_cw_top"></androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

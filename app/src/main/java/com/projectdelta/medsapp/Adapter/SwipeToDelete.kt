@@ -28,7 +28,7 @@ class SwipeToDelete(
 
 	// for Child Draw
 	private lateinit var deleteIcon : Drawable
-	private var swipeBackgroundDelete : ColorDrawable = ColorDrawable( Color.parseColor( "#CA0B00" ) )
+	private var swipeBackgroundDelete : ColorDrawable = ColorDrawable( Color.parseColor( "#B00020" ) )
 	override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
 
 		val itemView = viewHolder.itemView

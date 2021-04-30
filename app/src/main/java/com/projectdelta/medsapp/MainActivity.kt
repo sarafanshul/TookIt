@@ -15,6 +15,8 @@ import com.projectdelta.medsapp.Adapter.RecyclerItemClickListenr
 import com.projectdelta.medsapp.Util.getDate
 import com.projectdelta.medsapp.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.YearMonth
+import java.time.format.DateTimeFormatter
 
 lateinit var mainViewModel: MainViewModel
 lateinit var adapterToday : RecyclerViewTodayAdapter
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun setTodayLayout(){
+		main_tw_month.text = YearMonth.now().format(DateTimeFormatter.ofPattern("MMMM"))
 		adapterToday = RecyclerViewTodayAdapter()
 		main_rec_today.adapter = adapterToday
 		main_rec_today.layoutManager = LinearLayoutManager( this )
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 			main_tw_today.text = data.day
 			main_tw_int.text = getDate().toString()
 		})
-		main_ll_today.setOnClickListener {
+		main_cw_top.setOnClickListener {
 			itemOnClickRecyclerView(this@MainActivity , 0)
 		}
 		main_rec_today.addOnItemTouchListener(

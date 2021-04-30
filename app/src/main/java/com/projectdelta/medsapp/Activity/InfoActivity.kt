@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -35,17 +36,18 @@ class InfoActivity : AppCompatActivity() {
 		setView( )
 
 		var itemTouchHelper = ItemTouchHelper(
-				SwipeToDelete(
-						adapter
-				)
+			SwipeToDelete(
+				adapter
+			)
 		)
 		itemTouchHelper.attachToRecyclerView( info_rv_main )
 
 
-		info_btn_add.setOnClickListener {
+		info_fab_add.setOnClickListener {
 
 			Intent( this , AddEventActivity::class.java ).also{
 				it.putExtra("ID" , id)
+				it.putExtra("DAY" , info_tw_day.text.toString())
 				startActivityForResult(it , REQUEST_CODE)
 			}
 		}
@@ -55,15 +57,18 @@ class InfoActivity : AppCompatActivity() {
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)
 		if( resultCode == Activity.RESULT_OK ){
-			Snackbar.make( info_cl , "New Medicine Added !" , Snackbar.LENGTH_LONG ).show()
+			Snackbar.make( info_cl , "New event added !" , Snackbar.LENGTH_LONG ).apply {
+				anchorView = info_fab_add
+			}.show()
 		}
 	}
 
 	private fun setView( ){
 		adapter = RecyclerViewInfoAdapter()
 		info_rv_main.adapter = adapter
-		adapter.context = this
+		adapter.context = this@InfoActivity
 		info_rv_main.layoutManager = LinearLayoutManager( this )
+		info_rv_main.addItemDecoration( DividerItemDecoration( info_rv_main.context , DividerItemDecoration.VERTICAL ))
 
 		infoViewModel.getDataById(id).observe(this , androidx.lifecycle.Observer { data ->
 			adapter.set( data )
