@@ -19,7 +19,8 @@
     <color name="owl_yellow_light">#f9ee3f</color>
     <color name="owl_yellow_white">#fffee6</color>
     <color name="text_on_yellow">#000000</color>
-
+    <color name="owl_yellow_complementary">#bc03ff</color>
+    
     <color name="owl_blue">#0336FF</color>
     <color name="owl_blue_dark">#0007ef</color>
     <color name="owl_blue_light">#1565C0</color>

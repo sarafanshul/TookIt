@@ -18,6 +18,8 @@
         <item name="theme_text">@color/black</item>
         <item name="theme_text_light">#B2000000</item>
         <item name="colorOther">@color/pastel_green</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="colorPrimaryComplementary">@color/owl_yellow_complementary</item>
 
     </style>
 

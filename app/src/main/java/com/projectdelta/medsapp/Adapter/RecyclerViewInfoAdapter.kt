@@ -55,12 +55,12 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 			setPaddingRelative(55 , 30, 0, 0)
 			textSize = (resources.getDimension(R.dimen.textMedium))
 		}
-		val dialog = MaterialAlertDialogBuilder(context)
+		val dialog = MaterialAlertDialogBuilder(context , R.style.AlertDialogTheme)
 			.setCustomTitle(title)
 			.setMessage("Do you want to remove current item for one day or everyday ?")
 			.setPositiveButton("ALL"){_ ,_ -> deleteAll(viewHolder) }
 			.setNegativeButton("ONCE"){_ ,_ -> deleteOne(viewHolder) }
-			.setNeutralButton("CANCEL"){_ ,_ ->}
+			.setNeutralButton("CANCEL"){_ ,_ -> notifyDataSetChanged() } // swipe glitch
 			.create()
 
 		dialog.show()

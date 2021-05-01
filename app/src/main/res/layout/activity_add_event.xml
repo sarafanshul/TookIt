@@ -37,9 +37,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="0.7"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|left"
                 android:paddingLeft="20dp"
-                android:text="New event"
+                android:text="Add Medication"
                 android:textColor="?colorOnPrimary"
                 android:textSize="25sp" />
 
@@ -49,9 +49,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.30"
                 android:background="@android:color/transparent"
-                android:gravity="right"
+                android:gravity="right|center_vertical"
                 android:text="Save"
-                android:textAllCaps="true"
+                android:textAllCaps="false"
                 android:textColor="?colorOnPrimary"
                 android:textSize="20sp"
                 android:textStyle="normal" />
@@ -87,7 +87,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="5dp"
             android:singleLine="true"
-            android:hint="Event name"
+            android:hint="Enter name"
             android:paddingTop="25dp"
             android:textSize="50sp"
             app:layout_constraintTop_toBottomOf="@+id/view"
@@ -98,6 +98,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="20dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/custom_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +109,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
-                android:paddingRight="10dp"
+                android:paddingRight="2dp"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -115,9 +117,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
-                    android:paddingTop="30dp"
+                    android:paddingTop="16dp"
                     android:paddingBottom="10dp"
                     android:text="Select days"
+                    android:textStyle="bold"
                     android:textColor="?theme_text"
                     android:textSize="20dp" />
 
@@ -131,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:animateLayoutChanges="true"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="20dp" />
+                    android:paddingHorizontal="12dp" />
 
             </LinearLayout>
 
@@ -147,7 +150,7 @@
                     android:id="@+id/add_event_btn_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_baseline_access_time_24"
+                    app:icon="@drawable/ic_baseline_add_alarm_24"
                     app:iconSize="70dp"
                     app:iconTint="?theme_text_light"
                     android:background="@android:color/transparent"/>
@@ -159,7 +162,7 @@
                     android:textSize="25sp"
                     android:paddingRight="10dp"
                     android:textColor="?theme_text"
-                    android:gravity="center"
+                    android:gravity="center_vertical|right"
                     android:paddingBottom="20dp"/>
 
             </LinearLayout>

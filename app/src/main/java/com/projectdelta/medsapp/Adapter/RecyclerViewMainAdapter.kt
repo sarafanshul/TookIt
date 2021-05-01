@@ -26,14 +26,13 @@ class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.M
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        if( position == 0 ) { skipView(holder) ; return }
+        var str = "" ; data[position].list.forEach { str += it.first + "\n" }
         holder.itemView.apply {
             rec_main_tw_1.text = data[position].day
+
+            rec_main_tw_data.text = str
+
         }
-        if(position % 2 == 0)
-            holder.itemView.foregroundGravity = Gravity.RIGHT or Gravity.CENTER_VERTICAL
-        else
-            holder.itemView.foregroundGravity = Gravity.LEFT or Gravity.CENTER_VERTICAL
     }
 
     fun set( _data : List<UserData> ){

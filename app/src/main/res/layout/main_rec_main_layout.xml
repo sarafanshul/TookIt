@@ -11,13 +11,15 @@
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:animateLayoutChanges="true"
         android:backgroundTint="?colorPrimaryVariant"
         app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rec_main_tw_1"
@@ -28,6 +30,34 @@
                 android:textColor="?theme_text"
                 android:gravity="center"
                 android:paddingBottom="6dp"/>
+
+            <View
+                style="@style/DividerBlack"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/rec_main_tw_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="test"
+                    android:textSize="20sp"
+                    android:ellipsize="end"
+                    android:textColor="?theme_text_light"
+                    app:layout_constrainedHeight="true"
+                    android:layout_marginLeft="20dp"
+                    app:layout_constraintHeight_min="0dp"
+                    app:layout_constraintHeight_max="190dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

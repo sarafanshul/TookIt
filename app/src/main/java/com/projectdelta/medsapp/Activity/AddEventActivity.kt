@@ -86,16 +86,25 @@ class AddEventActivity : AppCompatActivity() {
 			for( i in selectedDays.size - 1 downTo 0 )
 				selectedDays[i] -= df
 
-			updateData( selectedDays , name , time_select )
-
-			setResult( Activity.RESULT_OK)
-			finish()
+			if( name != "" ) {
+				updateData(selectedDays, name, time_select)
+				resultOk()
+			}
+			resultCancel()
 		}
 
 		add_event_btn_cancel.setOnClickListener {
-			setResult( Activity.RESULT_CANCELED )
-			finish()
+			resultCancel()
 		}
+	}
+
+	private fun resultOk(){
+		setResult( Activity.RESULT_OK)
+		finish()
+	}
+	private fun resultCancel(){
+		setResult( Activity.RESULT_CANCELED )
+		finish()
 	}
 
 	private fun updateData(selectedDays : List<Int> , name : String , time : Long){

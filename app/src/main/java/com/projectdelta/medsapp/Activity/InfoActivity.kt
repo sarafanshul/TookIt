@@ -52,6 +52,10 @@ class InfoActivity : AppCompatActivity() {
 			}
 		}
 
+		info_btn_back.setOnClickListener {
+			finish()
+		}
+
 	}
 
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

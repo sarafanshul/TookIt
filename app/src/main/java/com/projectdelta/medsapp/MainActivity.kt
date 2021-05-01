@@ -7,16 +7,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.projectdelta.medsapp.Activity.InfoActivity
 import com.projectdelta.medsapp.Adapter.RecyclerViewMainAdapter
 import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
 import com.projectdelta.medsapp.Data.UserDatabaseManager
 import com.projectdelta.medsapp.Adapter.RecyclerItemClickListenr
+import com.projectdelta.medsapp.Data.UserData
+import com.projectdelta.medsapp.Util.fromMilliSecondsToString
 import com.projectdelta.medsapp.Util.getDate
 import com.projectdelta.medsapp.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 lateinit var mainViewModel: MainViewModel
 lateinit var adapterToday : RecyclerViewTodayAdapter
@@ -41,6 +46,12 @@ class MainActivity : AppCompatActivity() {
 
 	private fun setTodayLayout(){
 		main_tw_month.text = YearMonth.now().format(DateTimeFormatter.ofPattern("MMMM"))
+		val calender = Calendar.getInstance()
+		val offset = calender.get( Calendar.ZONE_OFFSET ) + calender.get( Calendar.DST_OFFSET )
+		val sinceMidnight = ( calender.timeInMillis + offset ) % (24 * 60 * 60 * 1000)
+
+
+
 		adapterToday = RecyclerViewTodayAdapter()
 		main_rec_today.adapter = adapterToday
 		main_rec_today.layoutManager = LinearLayoutManager( this )
@@ -49,9 +60,16 @@ class MainActivity : AppCompatActivity() {
 			adapterToday.set( data )
 			main_tw_today.text = data.day
 			main_tw_int.text = getDate().toString()
+			for( pi in data.list ){
+				if( pi.second >= sinceMidnight ){
+					main_tw_next_name.text = pi.first
+					main_tw_next_time.text = fromMilliSecondsToString(pi.second)
+					break
+				}
+			}
 		})
 		main_cw_top.setOnClickListener {
-			itemOnClickRecyclerView(this@MainActivity , 0)
+			itemOnClickRecyclerViewToday(this@MainActivity , adapterToday.data)
 		}
 		main_rec_today.addOnItemTouchListener(
 			RecyclerItemClickListenr(
@@ -60,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 				object :
 					RecyclerItemClickListenr.OnItemClickListener {
 					override fun onItemClick(view: View, position: Int) {
-						itemOnClickRecyclerView(this@MainActivity, 0) // because today = 0
+						itemOnClickRecyclerViewToday(this@MainActivity, adapterToday.data) // because today = 0
 					} // to Activity 2
 
 					override fun onItemLongClick(view: View?, position: Int) {}
@@ -69,12 +87,24 @@ class MainActivity : AppCompatActivity() {
 		)
 	}
 
+	private fun itemOnClickRecyclerViewToday( context: Context , data : UserData ){
+		Intent( context , InfoActivity::class.java ).also {
+			it.putExtra("DATA" , data)
+			startActivity( it )
+		}
+	}
+
 	private fun setMainLayout(){
 
 		adapter = RecyclerViewMainAdapter()
 		main_rec_main.adapter = adapter
-		main_rec_main.layoutManager = LinearLayoutManager(this)
-		mainViewModel.getAllByOrder.observe( this , androidx.lifecycle.Observer { data ->
+		main_rec_main.layoutManager = LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false)
+		main_rec_main.setScrollingTouchSlop( RecyclerView.TOUCH_SLOP_PAGING )
+
+		val snapHelper = PagerSnapHelper()
+		snapHelper.attachToRecyclerView( main_rec_main )
+
+		mainViewModel.getAllExceptTodayByOrder.observe( this , androidx.lifecycle.Observer { data ->
 			if(data == null) return@Observer
 			adapter.set( data )
 		} )

@@ -16,6 +16,8 @@
         <item name="theme_text_light">#B2FFFFFF</item>
         <item name="colorSecondaryVariantLight">@color/owl_blue_light</item>
         <item name="colorOther">@color/pastel_green</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="colorPrimaryComplementary">@color/owl_yellow_complementary</item>
 
     </style>
 

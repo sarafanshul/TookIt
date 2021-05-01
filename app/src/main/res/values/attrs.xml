@@ -6,5 +6,6 @@
         <attr name="theme_text_light" format="color"/>
         <attr name="colorSecondaryVariantLight" format="color"/>
         <attr name="colorOther" format="color"/>
+        <attr name="colorPrimaryComplementary" format="color"/>
     </declare-styleable>
 </resources>

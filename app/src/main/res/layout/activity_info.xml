@@ -14,19 +14,32 @@
         android:layout_height="match_parent"
         android:id="@+id/info_cl">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:paddingVertical="20dp"
-            android:paddingHorizontal="25dp"
-            android:id="@+id/info_tw_day"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/info_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wednesday"
-            android:gravity="left"
-            android:textColor="?theme_text"
-            android:textSize="55sp"
-            android:singleLine="true"
+            android:background="@android:color/transparent"
+            app:icon="@drawable/ic_baseline_arrow_back_24"
+            android:paddingTop="10dp"
+            app:iconSize="40dp"
+            app:iconGravity="start"
+            android:clickable="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/info_tw_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingHorizontal="25dp"
+            android:paddingBottom="20dp"
+            android:singleLine="true"
+            android:text="Wednesday"
+            android:textColor="?theme_text"
+            android:textSize="55sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_btn_back" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/info_rv_main"
