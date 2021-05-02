@@ -1,0 +1,61 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:title="Notifications">
+
+        <SwitchPreference
+            app:key="notifications"
+            app:defaultValue="false"
+            app:title="Enable notifications" />
+
+
+        <ListPreference
+            app:dependency="notifications"
+            app:defaultValue="1 hour"
+            app:entries="@array/notification_entries"
+            app:entryValues="@array/notification_values"
+            app:key="notification_pref"
+            app:title="Notification interval"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreference
+            app:dependency="notifications"
+            app:key="vibrate"
+            app:defaultValue="false"
+            app:title="Vibrate for notifications"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="Sync data periodically" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="pref_cat_data"
+        app:title="My data">
+
+        <Preference
+            app:key="manage_data"
+            app:title="Manage my data">
+            <intent
+                android:targetPackage="com.projectdelta.medsapp"
+                android:targetClass="com.projectdelta.medsapp.Activity.ManageDataActivity"/>
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Accessibility">
+
+    <SwitchPreference
+        app:title="Auto rotate screen"
+        app:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

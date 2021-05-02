@@ -1,6 +1,8 @@
 package com.projectdelta.medsapp.Data
 
 import android.content.Context
+import android.widget.Toast
+import com.projectdelta.medsapp.Constant.PREPOPULATE_DATA
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -19,6 +21,17 @@ object UserDatabaseManager {
 			}
 		}
 		GlobalScope.launch { job.join() }
+	}
+
+	fun nukeDatabase(secondaryContext: Context){
+		val DB = AppDatabase.getInstance(context).userDataDao()
+
+		GlobalScope.launch {
+			PREPOPULATE_DATA.forEach {
+				DB.insertOrUpdate(it)
+			}
+		}
+		Toast.makeText( secondaryContext , "All data has been removed !" , Toast.LENGTH_SHORT ).show()
 	}
 
 }

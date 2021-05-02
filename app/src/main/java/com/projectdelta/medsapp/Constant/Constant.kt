@@ -28,10 +28,19 @@ val PREPOPULATE_DATA_EX = mutableListOf(
     UserData("Saturday",   mutableListOf( Pair("Abacavir"  , 17300000L) , Pair("dolutegravir" , 23400000L ), Pair("lamivudine" , 31420000L) , Pair("Acyclovir" , 78400000L))  ,  ( __id++ ) )
 )
 
-fun createPrePopulateData() : List<UserData>{
-    return PREPOPULATE_DATA_EX
-}
+val PREPOPULATE_DATA = mutableListOf(
+    UserData("Sunday",     mutableListOf( )  ,  ( 0 ) ),
+    UserData("Monday",     mutableListOf( )  ,  ( 1 ) ),
+    UserData("Tuesday",    mutableListOf( )  ,  ( 2 ) ),
+    UserData("Wednesday",  mutableListOf( )  ,  ( 3 ) ),
+    UserData("Thursday",   mutableListOf( )  ,  ( 4 ) ),
+    UserData("Friday",     mutableListOf( )  ,  ( 5 ) ),
+    UserData("Saturday",   mutableListOf( )  ,  ( 6 ) )
+)
 
+fun createPrePopulateData() : List<UserData>{
+    return PREPOPULATE_DATA // use EX for debugging
+}
 
 val WEEKDAYS = arrayOf(
     "Sunday",

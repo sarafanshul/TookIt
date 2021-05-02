@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.projectdelta.medsapp.Activity.InfoActivity
+import com.projectdelta.medsapp.Activity.SettingsActivity
 import com.projectdelta.medsapp.Adapter.RecyclerViewMainAdapter
 import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
 import com.projectdelta.medsapp.Data.UserDatabaseManager
@@ -42,6 +44,18 @@ class MainActivity : AppCompatActivity() {
 
 		setMainLayout()
 
+		main_nav_view.setNavigationItemSelectedListener {
+			when( it.itemId ){
+				R.id.main_menu_profile -> goProfile()
+				R.id.main_menu_health -> goHealth()
+				R.id.main_menu_recent -> goRecent()
+				R.id.main_menu_notifications -> goSettings()
+				R.id.main_menu_settings -> goSettings()
+				R.id.main_menu_credits -> goHelp()
+				R.id.main_menu_feedback -> goHelp()
+			}
+			true
+		}
 	}
 
 	private fun setTodayLayout(){
@@ -140,4 +154,13 @@ class MainActivity : AppCompatActivity() {
 		}
 	}
 
+	private fun goSettings() {
+		Intent( this , SettingsActivity::class.java ).also{
+			startActivity( it )
+		}
+	}
+	private fun goHelp() {}
+	private fun goRecent() {}
+	private fun goHealth() {}
+	private fun goProfile() {}
 }

@@ -17,7 +17,6 @@
         <item name="android:background">?colorOnSecondary</item>
     </style>
 
-
     <style name="DividerDark">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">3dp</item>
@@ -32,9 +31,6 @@
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:background">?theme_text_light</item>
     </style>
-
-    <attr name="nav_header_color" format="reference" />
-    <attr name="light_on_primary" format="reference" />
 
     <style name="fullScreenAlertDialog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:layout_width">match_parent</item>
@@ -72,5 +68,20 @@
     <style name="NeutralButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">?colorSecondary</item>
     </style>
+
+    <style name="Settings" parent="Theme.MaterialComponents.Light.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorPrimaryVariant">?colorPrimaryVariant</item>
+        <item name="colorOnPrimary">?colorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">?colorSecondary</item>
+        <item name="colorSecondaryVariant">?colorSecondaryVariant</item>
+        <item name="colorOnSecondary">?colorOnSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
 
 </resources>
