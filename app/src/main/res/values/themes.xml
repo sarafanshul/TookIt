@@ -13,6 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
+        <item name="fontFamily">@font/product_sans_font_family</item>
+
         <item name="android:colorBackground">@color/owl_yellow</item>
         <item name="contrast_background">@color/white</item>
 

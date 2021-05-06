@@ -62,17 +62,19 @@
                             android:text="You are healthy !"
                             android:textColor="?colorOnSecondary"
                             android:textSize="20sp"
-                            android:layout_marginTop="-8dp"/>
+                            android:paddingBottom="8dp"/>
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="0dp"
                             android:id="@+id/main_tw_next_time"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.4"
                             android:text=""
-                            android:layout_marginTop="-8dp"
+                            android:gravity="right"
+                            android:textStyle="bold"
+                            android:paddingBottom="8dp"
                             android:textColor="?colorOnSecondary"
-                            android:textSize="26sp" />
+                            android:textSize="29sp" />
 
                     </LinearLayout>
 
