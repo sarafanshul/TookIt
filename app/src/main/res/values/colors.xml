@@ -26,6 +26,13 @@
     <color name="owl_blue_light">#1565C0</color>
     <color name="text_on_blue">#ffffff</color>
 
-    <color name="pastel_green">#25ff03</color>
+    <color name="pastel_green">#93F707</color>
+
+    <color name="light_cyan">#6CC7BC</color>
+    <color name="mat_yellow">#f7e307</color>
+    <color name="light_pink">#b2acd5</color>
+    <color name="material_black">#131b26</color>
+    <color name="shade_red">#C76C77</color>
+    <color name="material_purple">#6C77C7</color>
 
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="bg_colors">
+        <item>@color/light_cyan</item>
+        <item>@color/mat_yellow</item>
+        <item>@color/light_pink</item>
+        <item>@color/pastel_green</item>
+        <item>@color/shade_red</item>
+        <item>@color/material_purple</item>
+    </array>
+</resources>

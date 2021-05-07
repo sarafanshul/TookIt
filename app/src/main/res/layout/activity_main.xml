@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/main_cl_main"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
@@ -20,14 +21,15 @@
             android:layout_marginBottom="12dp">
 
             <androidx.cardview.widget.CardView
+                android:layout_marginTop="4dp"
                 android:id="@+id/main_cw_next"
                 android:layout_marginVertical="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
-                android:backgroundTint="?colorPrimaryComplementary"
+                android:backgroundTint="?contrast_theme_color"
                 android:clickable="true"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="6dp"
                 app:cardElevation="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -37,50 +39,74 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:paddingBottom="4dp"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Next"
-                        android:padding="4dp"
-                        android:textColor="?colorOnSecondary"
-                        android:textSize="32sp" />
+                    android:paddingVertical="10dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_weight="0.7">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/main_tw_next_name"
-                            android:layout_weight="0.8"
-                            android:text="You are healthy !"
-                            android:textColor="?colorOnSecondary"
-                            android:textSize="20sp"
-                            android:paddingBottom="8dp"/>
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="0dp"
-                            android:id="@+id/main_tw_next_time"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:text=""
-                            android:gravity="right"
+                            android:text="Time for your meds!"
+                            android:textSize="23sp"
                             android:textStyle="bold"
-                            android:paddingBottom="8dp"
-                            android:textColor="?colorOnSecondary"
-                            android:textSize="29sp" />
+                            android:textColor="?contrast_background"/>
+
+                        <LinearLayout
+                            android:paddingTop="4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:id="@+id/main_tw_banner"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="?contrast_background"/>
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:paddingLeft="3dp"
+                                android:id="@+id/main_tw_next_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:textColor="?colorPrimary"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/main_tw_next_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:gravity="center"
+                        android:textColor="?contrast_background"
+                        android:textSize="35sp"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today's schedule"
+                android:textSize="25sp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="12dp"
+                android:textStyle="bold"
+                android:textColor="?colorOnPrimary"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/main_cw_top"
@@ -168,7 +194,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHeight_max="190dp"
-                            app:layout_constraintHeight_min="100dp"
+                            app:layout_constraintHeight_min="0dp"
                             app:layout_constraintHorizontal_bias="0.937"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -179,6 +205,17 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly schedule"
+                android:textSize="25sp"
+                android:paddingHorizontal="8dp"
+                android:paddingTop="22dp"
+                android:paddingBottom="12dp"
+                android:textStyle="bold"
+                android:textColor="?colorOnPrimary"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_rec_main"
@@ -193,7 +230,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_cw_top"
                 app:layout_constraintVertical_bias="1.0"></androidx.recyclerview.widget.RecyclerView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

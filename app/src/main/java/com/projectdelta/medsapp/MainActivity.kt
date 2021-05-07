@@ -74,12 +74,20 @@ class MainActivity : AppCompatActivity() {
 			adapterToday.set( data )
 			main_tw_today.text = data.day
 			main_tw_int.text = getDate().toString()
+			var flag = false
 			for( pi in data.list ){
 				if( pi.second >= sinceMidnight ){
+					main_tw_banner.text = "Your scheduled dose of"
 					main_tw_next_name.text = pi.first
 					main_tw_next_time.text = fromMilliSecondsToString(pi.second)
+					flag = true
 					break
 				}
+			}
+			if( !flag ){
+				main_tw_next_name.text = ""
+				main_tw_banner.text = "All done for today!"
+				main_tw_next_time.text = ""
 			}
 		})
 		main_cw_top.setOnClickListener {

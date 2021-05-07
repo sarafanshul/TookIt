@@ -2,18 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="216dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rec_main_cw_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
-        app:cardCornerRadius="8dp"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="6dp"
         android:clickable="true"
         android:animateLayoutChanges="true"
-        android:backgroundTint="?colorPrimaryVariant"
         app:cardElevation="8dp">
 
         <LinearLayout
@@ -21,16 +22,43 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rec_main_tw_month"
+                    android:textColor="@color/material_black"
+                    android:text="May"
+                    android:textSize="26dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/material_black"
+                    android:text="29"
+                    android:id="@+id/rec_main_tw_date"
+                    android:paddingLeft="6dp"
+                    android:textStyle="bold"
+                    android:textSize="26dp"/>
+
+            </LinearLayout>
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rec_main_tw_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Wednesday"
-                android:textSize="40sp"
-                android:paddingTop="10dp"
-                android:textColor="?theme_text"
-                android:gravity="center"
-                android:paddingBottom="6dp"/>
+                android:background="@drawable/rounded_corner"
+                android:textSize="25sp"
+                android:layout_margin="8dp"
+                android:textColor="@color/white"
+                android:gravity="center" />
 
             <View
                 style="@style/DividerBlack"/>
@@ -45,7 +73,7 @@
                     android:paddingTop="8dp"
                     android:layout_height="wrap_content"
                     android:text="test"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:ellipsize="end"
                     android:textColor="?theme_text_light"
                     app:layout_constrainedHeight="true"
