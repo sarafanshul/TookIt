@@ -1,6 +1,6 @@
 package com.projectdelta.medsapp.Util
 
-import android.util.Log
+
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*

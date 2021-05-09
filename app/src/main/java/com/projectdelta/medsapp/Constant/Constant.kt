@@ -39,7 +39,7 @@ val PREPOPULATE_DATA = mutableListOf(
 )
 
 fun createPrePopulateData() : List<UserData>{
-    return PREPOPULATE_DATA // use EX for debugging
+    return PREPOPULATE_DATA_EX // use EX for debugging
 }
 
 val WEEKDAYS = arrayOf(

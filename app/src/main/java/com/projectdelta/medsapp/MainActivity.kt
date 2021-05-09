@@ -2,9 +2,13 @@ package com.projectdelta.medsapp
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.os.PowerManager
+import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +21,7 @@ import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
 import com.projectdelta.medsapp.Data.UserDatabaseManager
 import com.projectdelta.medsapp.Adapter.RecyclerItemClickListenr
 import com.projectdelta.medsapp.Data.UserData
+import com.projectdelta.medsapp.Util.NotificationUtil
 import com.projectdelta.medsapp.Util.fromMilliSecondsToString
 import com.projectdelta.medsapp.Util.getDate
 import com.projectdelta.medsapp.ViewModel.MainViewModel
@@ -35,10 +40,20 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		mainViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( MainViewModel::class.java )
+		NotificationUtil.context = applicationContext // Singleton Implementation
+		NotificationUtil.createNotificationChannel()
+		UserDatabaseManager.context = applicationContext
 
 		setContentView(R.layout.activity_main)
 
-		UserDatabaseManager.context = applicationContext
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			val pm : PowerManager = getSystemService( POWER_SERVICE ) as PowerManager
+			Log.d( "isIgnoringBatteryOptimizations" , "${pm.isIgnoringBatteryOptimizations( getPackageName() )}")
+			if (!pm.isIgnoringBatteryOptimizations( getPackageName() )) {
+//				startActivity( Intent( Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS , Uri.parse("package:"+getPackageName()) ) )
+				startActivity( Intent( Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS ) )
+			}
+		}
 
 		setTodayLayout()
 

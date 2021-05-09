@@ -1,18 +1,29 @@
 package com.projectdelta.medsapp.Activity
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreference
+import androidx.preference.*
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.projectdelta.medsapp.R
+import com.projectdelta.medsapp.Util.NotificationUtil
+import com.projectdelta.medsapp.Util.NotificationWorker
+import java.util.concurrent.TimeUnit
 
-class SettingsActivity : AppCompatActivity() , PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+
+class SettingsActivity : AppCompatActivity() ,
+		PreferenceFragmentCompat.OnPreferenceStartFragmentCallback ,
+		SharedPreferences.OnSharedPreferenceChangeListener {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.settings_activity)
 		supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 		if (savedInstanceState == null) {
 			supportFragmentManager
 				.beginTransaction()
@@ -20,12 +31,49 @@ class SettingsActivity : AppCompatActivity() , PreferenceFragmentCompat.OnPrefer
 				.commit()
 		}
 
+
 	}
+
+	override fun onResume() {
+		super.onResume()
+		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this)
+	}
+
+	override fun onPause() {
+		super.onPause()
+		PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this)
+	}
+
+	private val workTag = "notificationWork"
+
+	override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+		if(key!! == "notifications" ) {
+			if (sharedPreferences?.getBoolean(key, false) == true) {
+				val time : Long = when(sharedPreferences?.getString("notification_pref" , "1 hour")){
+					"30 minutes" -> 3600000 / 2
+					"6 hours" -> 3600000 * 6
+					else -> 3600000
+				}
+				NotificationUtil.startNotifications(this ,workTag , time )
+			} else {
+				NotificationUtil.stopNotifications( this , workTag )
+			}
+		}
+		if( key!! == "notification_pref" && sharedPreferences!!.getBoolean("notifications" , false) ){
+			val time : Long = when(sharedPreferences?.getString(key , "1 hour")){
+				"30 minutes" -> 3600000 / 2
+				"6 hours" -> 3600000 * 6
+				else -> 3600000
+			}
+			NotificationUtil.startNotifications(this ,workTag , time )
+		}
+	}
+
+
 
 	class SettingsFragment : PreferenceFragmentCompat() {
 		override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
 			setPreferencesFromResource(R.xml.root_preferences, rootKey)
-
 		}
 	}
 
