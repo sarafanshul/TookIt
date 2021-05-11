@@ -34,6 +34,7 @@ class AddEventActivity : AppCompatActivity() {
 
 		eventViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( AddEventViewModel::class.java )
 
+		setTheme(R.style.Theme_MedsApp)
 		setContentView(R.layout.activity_add_event)
 
 		id = intent.getIntExtra("ID" , -1)

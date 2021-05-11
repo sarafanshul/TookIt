@@ -21,6 +21,8 @@ class SettingsActivity : AppCompatActivity() ,
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
+		setTheme(R.style.Theme_MedsApp)
 		setContentView(R.layout.settings_activity)
 		supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

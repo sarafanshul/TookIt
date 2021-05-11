@@ -36,4 +36,10 @@
         <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
         <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>
+
+    <style name="SplashScreneTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_image_night</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
 </resources>

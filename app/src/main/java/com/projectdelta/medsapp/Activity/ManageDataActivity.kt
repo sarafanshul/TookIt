@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_manage_data.*
 class ManageDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setTheme(R.style.Theme_MedsApp)
         setContentView(R.layout.activity_manage_data)
 
         val parentView = findViewById<ConstraintLayout>(R.id.manage_data_CL)

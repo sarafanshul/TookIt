@@ -28,6 +28,7 @@ class InfoActivity : AppCompatActivity() {
 
 		infoViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( InfoViewModel::class.java )
 
+		setTheme(R.style.Theme_MedsApp)
 		setContentView(R.layout.activity_info)
 
 		val _data = intent.getSerializableExtra("DATA") as UserData

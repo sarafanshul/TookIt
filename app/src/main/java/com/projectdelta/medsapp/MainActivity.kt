@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 		mainViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( MainViewModel::class.java )
 		NotificationUtil.createNotificationChannel(applicationContext )
 
+		setTheme(R.style.Theme_MedsApp)
 		setContentView(R.layout.activity_main)
 
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -5,12 +5,12 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_new"
         android:label="@string/app_name"
         android:exported="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MedsApp">
+        android:theme="@style/SplashScreneTheme">
         <activity android:name=".Activity.ManageDataActivity"></activity>
         <activity
             android:name=".Activity.SettingsActivity"
@@ -27,7 +27,7 @@
 
         <service
             android:name=".MyIntentService"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher_new"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:enabled="true">
