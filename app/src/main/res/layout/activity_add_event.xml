@@ -17,7 +17,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="?colorPrimaryVariant"
+            android:background="?colorOther"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_baseline_add_alarm_24"
                     app:iconSize="70dp"
-                    app:iconTint="?theme_text_light"
+                    app:iconTint="?theme_text"
                     android:background="@android:color/transparent"/>
 
                 <com.google.android.material.textview.MaterialTextView

@@ -79,7 +79,7 @@
                                 android:textSize="16sp"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textColor="?colorPrimary"/>
+                                android:textColor="?colorPrimaryComplementary"/>
 
                         </LinearLayout>
 
@@ -118,6 +118,7 @@
                 app:cardCornerRadius="8dp"
                 app:cardElevation="3dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,17 +139,19 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/main_tw_today"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="0.95"
-                            android:paddingLeft="4dp"
-                            android:text=""
+                            android:paddingLeft="20dp"
+                            android:singleLine="true"
+                            android:gravity="center_vertical"
                             android:textColor="?colorOnSecondary"
-                            android:textSize="50sp" />
+                            android:textSize="45sp" />
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.25"
+                            android:layout_marginRight="20dp"
                             android:orientation="vertical">
 
                             <com.google.android.material.textview.MaterialTextView
@@ -157,8 +160,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="-8dp"
                                 android:gravity="right|center_vertical"
-                                android:paddingRight="7dp"
-                                android:text=""
                                 android:textColor="?colorOnSecondary"
                                 android:textSize="45dp" />
 
@@ -166,8 +167,8 @@
                                 android:id="@+id/main_tw_month"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center|top"
-                                android:text=""
+                                android:layout_marginLeft="-8dp"
+                                android:gravity="right|top"
                                 android:textColor="?colorOnSecondary" />
 
                         </LinearLayout>

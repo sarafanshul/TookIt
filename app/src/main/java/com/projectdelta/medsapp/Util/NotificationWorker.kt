@@ -15,7 +15,7 @@ class NotificationWorker(appContext: Context, workerParams: WorkerParameters):
 		Worker(appContext, workerParams) {
 
 	override fun doWork(): Result {
-
+		Log.d( "WorkManager|Intent|Start" , "TEST-15min" )
 		val job = GlobalScope.launch {
 
 			val data = AppDatabase.getInstance(applicationContext).userDataDao().getToday(DAY_VALUE)
@@ -23,7 +23,7 @@ class NotificationWorker(appContext: Context, workerParams: WorkerParameters):
 			val calender = Calendar.getInstance()
 			val offset = calender.get( Calendar.ZONE_OFFSET ) + calender.get( Calendar.DST_OFFSET )
 			val sinceMidnight = ( calender.timeInMillis + offset ) % (24 * 60 * 60 * 1000)
-			NotificationUtil.data = data.list.filter { it.second >= sinceMidnight && it.second <= sinceMidnight + HOUR }
+			NotificationUtil.data = data.list.filter { it.second >= sinceMidnight && it.second <= sinceMidnight + HOUR*3L }
 
 			if( data.list.size == 0 ) return@launch // no null notifications
 

@@ -9,9 +9,7 @@ import kotlinx.coroutines.launch
 
 object UserDatabaseManager {
 
-	lateinit var context: Context
-
-	fun deleteAllInstances( name : String , time : Long ){
+	fun deleteAllInstances( context: Context , name : String , time : Long ){
 		val DB = AppDatabase.getInstance(context).userDataDao()
 		val job = GlobalScope.launch {
 			val database = DB.getDatabase()
@@ -24,7 +22,7 @@ object UserDatabaseManager {
 	}
 
 	fun nukeDatabase(secondaryContext: Context){
-		val DB = AppDatabase.getInstance(context).userDataDao()
+		val DB = AppDatabase.getInstance(secondaryContext).userDataDao()
 
 		GlobalScope.launch {
 			PREPOPULATE_DATA.forEach {

@@ -94,7 +94,7 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 		removed_item = this.data.list[removed_pos].first
 		removed_time = this.data.list[removed_pos].second
 
-		UserDatabaseManager.deleteAllInstances(removed_item , removed_time)
+		UserDatabaseManager.deleteAllInstances(context , removed_item , removed_time)
 
 		Snackbar.make( viewHolder.itemView , "${removed_item.capitalize()} Removed from everywhere ! " ,Snackbar.LENGTH_LONG ).apply {
 			animationMode = Snackbar.ANIMATION_MODE_SLIDE

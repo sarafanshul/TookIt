@@ -22,12 +22,10 @@ import java.util.concurrent.TimeUnit
 
 object NotificationUtil {
 
-	lateinit var context: Context
 	val notification_icon = R.drawable.ic_twotone_medication_24
 	var data = emptyList<Pair< String , Long >>()
-	var notifPref : Boolean = false
 
-	fun createNotificationChannel(){
+	fun createNotificationChannel(context : Context){
 		val channel = NotificationChannel( CHANNEL_ID , CHANNEL_NAME , NotificationManager.IMPORTANCE_HIGH ).apply {
 			enableLights(true)
 		}
@@ -69,7 +67,8 @@ object NotificationUtil {
 
 	 fun startNotifications( context : Context , tag : String , interval : Long ){
 
-		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(interval , TimeUnit.MILLISECONDS)
+//		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(interval , TimeUnit.MILLISECONDS)
+		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(15 , TimeUnit.MINUTES)
 			.addTag(tag)
 			.build()
 		 WorkManager.getInstance(context).enqueueUniquePeriodicWork(

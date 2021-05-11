@@ -40,18 +40,16 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		mainViewModel = ViewModelProvider( this , ViewModelProvider.AndroidViewModelFactory.getInstance(this.application) ).get( MainViewModel::class.java )
-		NotificationUtil.context = applicationContext // Singleton Implementation
-		NotificationUtil.createNotificationChannel()
-		UserDatabaseManager.context = applicationContext
+		NotificationUtil.createNotificationChannel(applicationContext )
 
 		setContentView(R.layout.activity_main)
 
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-			val pm : PowerManager = getSystemService( POWER_SERVICE ) as PowerManager
-			Log.d( "isIgnoringBatteryOptimizations" , "${pm.isIgnoringBatteryOptimizations( getPackageName() )}")
+			val pm : PowerManager = getSystemService(AppCompatActivity.POWER_SERVICE) as PowerManager
 			if (!pm.isIgnoringBatteryOptimizations( getPackageName() )) {
-//				startActivity( Intent( Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS , Uri.parse("package:"+getPackageName()) ) )
-				startActivity( Intent( Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS ) )
+				Intent( this , MyIntentService::class.java ).also {
+					startService( it )
+				}
 			}
 		}
 

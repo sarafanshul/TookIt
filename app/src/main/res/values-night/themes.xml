@@ -2,32 +2,32 @@
     <!-- Base application theme. -->
     <style name="Theme.MedsApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/owl_yellow</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
 
         <item name="fontFamily">@font/product_sans_font_family</item>
 
         <item name="android:colorBackground">@color/black</item>
-        <item name="contrast_background">@color/black</item>
-        <item name="contrast_theme_color">@color/white</item>
+        <item name="contrast_background">@color/white</item>
+        <item name="contrast_theme_color">#2B2B2B</item>
 
         <item name="theme_text">@color/white</item>
-        <item name="theme_text_light">#B2FFFFFF</item>
+        <item name="theme_text_light">@color/material_black</item>
         <item name="text_on_dark_background">#C8C8C8</item>
 
         <item name="colorSecondaryVariantLight">@color/owl_blue_light</item>
-        <item name="colorOther">@color/pastel_green</item>
+        <item name="colorOther">#121212</item>
 
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="colorPrimaryComplementary">@color/owl_yellow_complementary</item>
+        <item name="colorPrimaryComplementary">@color/owl_yellow</item>
         <item name="nav_header_color">@drawable/bg_gradient_yellow</item>
 
     </style>
