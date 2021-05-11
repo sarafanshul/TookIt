@@ -16,7 +16,10 @@ interface UserDataDao {
     fun getAllByOrder(dayValue : Int): LiveData< List< UserData > >
 
     @Query( "SELECT * FROM UserData WHERE id = :id " )
-    fun getDataById( id : Int) : LiveData<UserData>
+    fun getLiveDataById(id : Int) : LiveData<UserData>
+
+    @Query( "SELECT * FROM UserData WHERE id = :id " )
+    suspend fun getDataById(id : Int) : UserData
 
     @Query( "SELECT * FROM UserData WHERE id = :id " )
     suspend fun getDataByIdMainThread( id : Int) : UserData

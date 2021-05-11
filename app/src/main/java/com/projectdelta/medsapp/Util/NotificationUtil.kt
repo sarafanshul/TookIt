@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit
 object NotificationUtil {
 
 	val notification_icon = R.drawable.ic_twotone_medication_24
-	var data = emptyList<Pair< String , Long >>()
+//	var data = emptyList<Pair< String , Long >>()
 
 	fun createNotificationChannel(context : Context){
 		val channel = NotificationChannel( CHANNEL_ID , CHANNEL_NAME , NotificationManager.IMPORTANCE_HIGH ).apply {
@@ -33,7 +33,7 @@ object NotificationUtil {
 		manager.createNotificationChannel( channel )
 	}
 
-	fun newNotification( context_worker: Context , NOTIFICATION_ID : Int = 1 ){
+	fun newNotification( context_worker: Context , data : List<Pair<String , Long>> , NOTIFICATION_ID : Int = 1 ){
 		if( data.size == 0 ) return  // don't fire for empty tasks
 
 		val calender = Calendar.getInstance()

@@ -12,6 +12,7 @@ import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.projectdelta.medsapp.Constant.WEEKDAYS
+import com.projectdelta.medsapp.Data.UserDatabaseManager
 import com.projectdelta.medsapp.R
 import com.projectdelta.medsapp.Util.fromMilliSecondsToString
 import com.projectdelta.medsapp.Util.fromMinutesToMilliSeconds
@@ -87,7 +88,7 @@ class AddEventActivity : AppCompatActivity() {
 				selectedDays[i] -= df
 
 			if( name != "" ) {
-				updateData(selectedDays, name, time_select)
+				UserDatabaseManager.updateMultipleData( this , selectedDays , name , time_select )
 				resultOk()
 			}
 			resultCancel()
@@ -105,28 +106,6 @@ class AddEventActivity : AppCompatActivity() {
 	private fun resultCancel(){
 		setResult( Activity.RESULT_CANCELED )
 		finish()
-	}
-
-	private fun updateData(selectedDays : List<Int> , name : String , time : Long){
-		val job = GlobalScope.launch {
-			 selectedDays.forEach forE@{
-				var userData = eventViewModel.getDataByIdMainThread(it)
-				if( userData.list == null ){
-					return@forE
-				}
-				userData.list.forEach {
-					if (it.first == name && it.second == time) return@forE
-				}
-				var idx = userData.list.size;
-				for (i in userData.list.indices) {
-					if (time <= userData.list[i].second) {
-						idx = i; break; }
-				}
-				userData.list.add(idx, Pair(name, time))
-				eventViewModel.update(userData)
-			}
-		}
-		GlobalScope.launch { job.join() }
 	}
 
 	override fun onDestroy() {
