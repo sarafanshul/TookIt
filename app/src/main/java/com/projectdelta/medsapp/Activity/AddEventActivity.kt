@@ -1,27 +1,21 @@
-package com.projectdelta.medsapp.Activity
+package com.projectdelta.medsapp.activity
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.TimePicker
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
-import com.projectdelta.medsapp.Constant.WEEKDAYS
-import com.projectdelta.medsapp.Data.UserDatabaseManager
+import com.projectdelta.medsapp.constant.WEEKDAYS
+import com.projectdelta.medsapp.data.UserDatabaseManager
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.fromMilliSecondsToString
-import com.projectdelta.medsapp.Util.fromMinutesToMilliSeconds
-import com.projectdelta.medsapp.ViewModel.AddEventViewModel
+import com.projectdelta.medsapp.util.fromMilliSecondsToString
+import com.projectdelta.medsapp.util.fromMinutesToMilliSeconds
+import com.projectdelta.medsapp.viewModel.AddEventViewModel
 import kotlinx.android.synthetic.main.activity_add_event.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.math.sin
 
 class AddEventActivity : AppCompatActivity() {
 

@@ -1,10 +1,9 @@
-package com.projectdelta.medsapp.Data
+package com.projectdelta.medsapp.data
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.projectdelta.medsapp.Constant.DATA_SIZE
-import com.projectdelta.medsapp.Constant.createPrePopulateData
+import com.projectdelta.medsapp.constant.DATA_SIZE
+import com.projectdelta.medsapp.constant.createPrePopulateData
 import kotlinx.coroutines.*
 
 object UserDatabaseManager {

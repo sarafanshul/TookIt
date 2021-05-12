@@ -1,18 +1,11 @@
-package com.projectdelta.medsapp.Activity
+package com.projectdelta.medsapp.activity
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.*
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.NotificationUtil
-import com.projectdelta.medsapp.Util.NotificationWorker
-import java.util.concurrent.TimeUnit
+import com.projectdelta.medsapp.util.NotificationUtil
 
 
 class SettingsActivity : AppCompatActivity() ,

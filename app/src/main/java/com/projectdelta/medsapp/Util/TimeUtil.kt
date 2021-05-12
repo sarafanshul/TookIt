@@ -1,4 +1,4 @@
-package com.projectdelta.medsapp.Util
+package com.projectdelta.medsapp.util
 
 
 import java.text.DateFormatSymbols

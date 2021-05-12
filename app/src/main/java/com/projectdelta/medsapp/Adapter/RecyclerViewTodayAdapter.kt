@@ -1,13 +1,12 @@
-package com.projectdelta.medsapp.Adapter
+package com.projectdelta.medsapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.projectdelta.medsapp.Data.UserData
+import com.projectdelta.medsapp.data.UserData
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.fromMilliSecondsToMinutes
-import com.projectdelta.medsapp.Util.fromMilliSecondsToString
+import com.projectdelta.medsapp.util.fromMilliSecondsToString
 import kotlinx.android.synthetic.main.main_rec_today_layout.view.*
 
 class RecyclerViewTodayAdapter( ) : RecyclerView.Adapter<RecyclerViewTodayAdapter.TodayViewHolder>( ) {

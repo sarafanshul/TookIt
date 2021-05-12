@@ -44,7 +44,7 @@
             app:title="Manage my data">
             <intent
                 android:targetPackage="com.projectdelta.medsapp"
-                android:targetClass="com.projectdelta.medsapp.Activity.ManageDataActivity"/>
+                android:targetClass="com.projectdelta.medsapp.activity.ManageDataActivity"/>
         </Preference>
 
     </PreferenceCategory>

@@ -1,14 +1,12 @@
-package com.projectdelta.medsapp.Adapter
+package com.projectdelta.medsapp.adapter
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.projectdelta.medsapp.R
 
 

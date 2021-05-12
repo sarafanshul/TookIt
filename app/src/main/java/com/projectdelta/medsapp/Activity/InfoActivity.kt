@@ -1,4 +1,4 @@
-package com.projectdelta.medsapp.Activity
+package com.projectdelta.medsapp.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.projectdelta.medsapp.Adapter.RecyclerViewInfoAdapter
-import com.projectdelta.medsapp.Adapter.SwipeToDelete
-import com.projectdelta.medsapp.Data.UserData
+import com.google.android.material.textview.MaterialTextView
+import com.projectdelta.medsapp.adapter.RecyclerViewInfoAdapter
+import com.projectdelta.medsapp.adapter.SwipeToDelete
+import com.projectdelta.medsapp.data.UserData
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.ViewModel.InfoViewModel
+import com.projectdelta.medsapp.libary.StatesRecyclerViewAdapter
+import com.projectdelta.medsapp.viewModel.InfoViewModel
 import kotlinx.android.synthetic.main.activity_info.*
 
 class InfoActivity : AppCompatActivity() {
@@ -69,13 +71,19 @@ class InfoActivity : AppCompatActivity() {
 	}
 
 	private fun setView( ){
-		adapter = RecyclerViewInfoAdapter()
-		info_rv_main.adapter = adapter
-		adapter.context = this@InfoActivity
+
 		info_rv_main.layoutManager = LinearLayoutManager( this )
+		adapter = RecyclerViewInfoAdapter()
+		val emptyView = layoutInflater.inflate(R.layout.empty_view_layout , info_rv_main , false)
+		emptyView.findViewById<MaterialTextView>(R.id.empty_view_text_view).setTextColor( R.attr.theme_text )
+		val statesRecyclerViewAdapter = StatesRecyclerViewAdapter( adapter , emptyView , emptyView , emptyView )
+		info_rv_main.adapter = statesRecyclerViewAdapter
+		adapter.context = this@InfoActivity
 		info_rv_main.addItemDecoration( DividerItemDecoration( info_rv_main.context , DividerItemDecoration.VERTICAL ))
 
 		infoViewModel.getDataById(id).observe(this , androidx.lifecycle.Observer { data ->
+			if( data.list.isEmpty() ) statesRecyclerViewAdapter.state = StatesRecyclerViewAdapter.STATE_EMPTY
+			else statesRecyclerViewAdapter.state = StatesRecyclerViewAdapter.STATE_NORMAL
 			adapter.set( data )
 			info_tw_day.text = data.day
 		})

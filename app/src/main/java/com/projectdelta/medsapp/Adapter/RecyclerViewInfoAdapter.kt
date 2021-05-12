@@ -1,21 +1,17 @@
-package com.projectdelta.medsapp.Adapter
+package com.projectdelta.medsapp.adapter
 
 import android.content.Context
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginLeft
-import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
-import com.projectdelta.medsapp.Data.UserData
-import com.projectdelta.medsapp.Data.UserDatabaseManager
+import com.projectdelta.medsapp.data.UserData
+import com.projectdelta.medsapp.data.UserDatabaseManager
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.fromMilliSecondsToString
+import com.projectdelta.medsapp.util.fromMilliSecondsToString
 import kotlinx.android.synthetic.main.activity_info_rv_main_layout.view.*
 
 class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.InfoViewHolder>() {

@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".Activity.AddEventActivity">
+    tools:context=".activity.AddEventActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.AddEventActivity">
+        tools:context=".activity.AddEventActivity">
 
         <LinearLayout
             android:id="@+id/linearLayout"

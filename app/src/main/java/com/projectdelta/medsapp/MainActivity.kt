@@ -2,29 +2,26 @@ package com.projectdelta.medsapp
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PowerManager
-import android.provider.Settings
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.projectdelta.medsapp.Activity.InfoActivity
-import com.projectdelta.medsapp.Activity.SettingsActivity
-import com.projectdelta.medsapp.Adapter.RecyclerViewMainAdapter
-import com.projectdelta.medsapp.Adapter.RecyclerViewTodayAdapter
-import com.projectdelta.medsapp.Data.UserDatabaseManager
-import com.projectdelta.medsapp.Adapter.RecyclerItemClickListenr
-import com.projectdelta.medsapp.Data.UserData
-import com.projectdelta.medsapp.Util.NotificationUtil
-import com.projectdelta.medsapp.Util.fromMilliSecondsToString
-import com.projectdelta.medsapp.Util.getDate
-import com.projectdelta.medsapp.ViewModel.MainViewModel
+import com.projectdelta.medsapp.activity.InfoActivity
+import com.projectdelta.medsapp.activity.SettingsActivity
+import com.projectdelta.medsapp.adapter.RecyclerViewMainAdapter
+import com.projectdelta.medsapp.adapter.RecyclerViewTodayAdapter
+import com.projectdelta.medsapp.adapter.RecyclerItemClickListenr
+import com.projectdelta.medsapp.data.UserData
+import com.projectdelta.medsapp.libary.StatesRecyclerViewAdapter
+import com.projectdelta.medsapp.util.NotificationUtil
+import com.projectdelta.medsapp.util.fromMilliSecondsToString
+import com.projectdelta.medsapp.util.getDate
+import com.projectdelta.medsapp.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -78,13 +75,22 @@ class MainActivity : AppCompatActivity() {
 		val offset = calender.get( Calendar.ZONE_OFFSET ) + calender.get( Calendar.DST_OFFSET )
 		val sinceMidnight = ( calender.timeInMillis + offset ) % (24 * 60 * 60 * 1000)
 
-
-
+		// adapter(Today)
+		main_rec_today.layoutManager = LinearLayoutManager( this )
 		adapterToday = RecyclerViewTodayAdapter()
 		main_rec_today.adapter = adapterToday
-		main_rec_today.layoutManager = LinearLayoutManager( this )
+
+		val emptyView : View = layoutInflater.inflate( R.layout.empty_view_layout , main_rec_today , false )
+		val statesRecyclerViewAdapterToday = StatesRecyclerViewAdapter(adapterToday , emptyView , emptyView , emptyView)
+		main_rec_today.adapter =  statesRecyclerViewAdapterToday
+		statesRecyclerViewAdapterToday.state = StatesRecyclerViewAdapter.STATE_EMPTY
+
 		mainViewModel.today.observe(this , androidx.lifecycle.Observer { data ->
 			if(data == null) return@Observer
+
+			if( data!!.list.isEmpty() ) statesRecyclerViewAdapterToday.state = StatesRecyclerViewAdapter.STATE_EMPTY
+			else statesRecyclerViewAdapterToday.state = StatesRecyclerViewAdapter.STATE_NORMAL
+
 			adapterToday.set( data )
 			main_tw_today.text = data.day
 			main_tw_int.text = getDate().toString()
@@ -181,8 +187,12 @@ class MainActivity : AppCompatActivity() {
 			startActivity( it )
 		}
 	}
+
 	private fun goHelp() {}
+
 	private fun goRecent() {}
+
 	private fun goHealth() {}
+
 	private fun goProfile() {}
 }

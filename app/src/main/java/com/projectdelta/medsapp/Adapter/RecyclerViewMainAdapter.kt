@@ -1,13 +1,12 @@
-package com.projectdelta.medsapp.Adapter
+package com.projectdelta.medsapp.adapter
 
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.projectdelta.medsapp.Data.UserData
+import com.projectdelta.medsapp.data.UserData
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.Util.getMonthDateOffset
+import com.projectdelta.medsapp.util.getMonthDateOffset
 import kotlinx.android.synthetic.main.main_rec_main_layout.view.*
 
 class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.MainViewHolder>( ) {
@@ -28,9 +27,10 @@ class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.M
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         var str = "" ; data[position].list.forEach { str += it.first + "\n" }
+        if( data[position].list.isEmpty() )str = "It's all clear today!"
+
         val pair = getMonthDateOffset( position + 1 )
-        val background = holder.itemView.rec_main_cw_main.background
-//        background.setTint( holder.itemView.resources.obtainTypedArray(R.array.bg_colors).getDrawable(position % 6 ) )
+
         holder.itemView.apply {
             rec_main_cw_main.setCardBackgroundColor( resources.obtainTypedArray(R.array.bg_colors).getColor(position % 6 , 0) )
             rec_main_tw_1.text = data[position].day

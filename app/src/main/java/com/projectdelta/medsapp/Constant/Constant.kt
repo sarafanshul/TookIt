@@ -1,6 +1,6 @@
-package com.projectdelta.medsapp.Constant
+package com.projectdelta.medsapp.constant
 
-import com.projectdelta.medsapp.Data.UserData
+import com.projectdelta.medsapp.data.UserData
 import java.util.*
 
 const val DATABASE_NAME = "user-db"

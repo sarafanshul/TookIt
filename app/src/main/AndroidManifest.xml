@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
         android:theme="@style/SplashScreneTheme">
-        <activity android:name=".Activity.ManageDataActivity"></activity>
+        <activity android:name=".activity.ManageDataActivity"></activity>
         <activity
-            android:name=".Activity.SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Activity.AddEventActivity" />
-        <activity android:name=".Activity.InfoActivity" />
+        <activity android:name=".activity.AddEventActivity" />
+        <activity android:name=".activity.InfoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

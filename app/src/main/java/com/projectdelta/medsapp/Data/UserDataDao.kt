@@ -1,4 +1,4 @@
-package com.projectdelta.medsapp.Data
+package com.projectdelta.medsapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

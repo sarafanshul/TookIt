@@ -1,12 +1,11 @@
-package com.projectdelta.medsapp.Util
+package com.projectdelta.medsapp.util
 
-import android.app.Notification
 import android.content.Context
 import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.projectdelta.medsapp.Constant.DAY_VALUE
-import com.projectdelta.medsapp.Data.AppDatabase
+import com.projectdelta.medsapp.constant.DAY_VALUE
+import com.projectdelta.medsapp.data.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async

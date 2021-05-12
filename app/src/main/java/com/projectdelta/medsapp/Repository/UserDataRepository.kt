@@ -1,9 +1,9 @@
-package com.projectdelta.medsapp.Repository
+package com.projectdelta.medsapp.repository
 
 import androidx.lifecycle.LiveData
-import com.projectdelta.medsapp.Constant.DAY_VALUE
-import com.projectdelta.medsapp.Data.UserData
-import com.projectdelta.medsapp.Data.UserDataDao
+import com.projectdelta.medsapp.constant.DAY_VALUE
+import com.projectdelta.medsapp.data.UserData
+import com.projectdelta.medsapp.data.UserDataDao
 
 class UserDataRepository( private val userDataDao: UserDataDao ) {
 

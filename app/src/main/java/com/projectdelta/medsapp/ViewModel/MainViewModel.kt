@@ -1,15 +1,14 @@
-package com.projectdelta.medsapp.ViewModel
+package com.projectdelta.medsapp.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.projectdelta.medsapp.Data.AppDatabase
-import com.projectdelta.medsapp.Data.UserData
-import com.projectdelta.medsapp.Data.UserDataDao
-import com.projectdelta.medsapp.Repository.UserDataRepository
+import com.projectdelta.medsapp.data.AppDatabase
+import com.projectdelta.medsapp.data.UserData
+import com.projectdelta.medsapp.data.UserDataDao
+import com.projectdelta.medsapp.repository.UserDataRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainViewModel( application: Application ) : AndroidViewModel( application ) {

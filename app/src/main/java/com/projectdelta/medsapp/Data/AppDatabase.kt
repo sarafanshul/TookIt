@@ -1,19 +1,14 @@
-package com.projectdelta.medsapp.Data
+package com.projectdelta.medsapp.data
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.projectdelta.medsapp.Constant.DATABASE_NAME
-import com.projectdelta.medsapp.Constant.createPrePopulateData
-import com.projectdelta.medsapp.Util.Converters
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import com.projectdelta.medsapp.constant.DATABASE_NAME
+import com.projectdelta.medsapp.constant.createPrePopulateData
+import com.projectdelta.medsapp.util.Converters
 import java.util.concurrent.Executors
 
 
