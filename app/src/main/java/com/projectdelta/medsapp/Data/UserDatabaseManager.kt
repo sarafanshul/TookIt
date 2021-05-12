@@ -21,6 +21,16 @@ object UserDatabaseManager {
 		}
 	}
 
+	fun updateSingleData( context: Context , data : UserData ){
+		val DB = AppDatabase.getInstance(context).userDataDao()
+		GlobalScope.launch {
+			val job = launch(Dispatchers.IO) {
+				DB.updateData( data )
+			}
+			job.join()
+		}
+	}
+
 	fun updateMultipleData(context: Context , selectedDays : List<Int> , name : String , time : Long){
 		val DB = AppDatabase.getInstance(context).userDataDao()
 		GlobalScope.launch {

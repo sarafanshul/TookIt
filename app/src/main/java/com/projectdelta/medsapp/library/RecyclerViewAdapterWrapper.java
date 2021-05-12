@@ -1,4 +1,4 @@
-package com.projectdelta.medsapp.libary;
+package com.projectdelta.medsapp.library;
 
 import android.view.ViewGroup;
 

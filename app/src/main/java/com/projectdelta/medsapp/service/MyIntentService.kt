@@ -1,8 +1,9 @@
-package com.projectdelta.medsapp
+package com.projectdelta.medsapp.service
 
 
 import android.content.Intent
 import android.provider.Settings
+import android.util.Log
 import androidx.core.app.JobIntentService
 
 class MyIntentService : JobIntentService() {
@@ -26,7 +27,7 @@ class MyIntentService : JobIntentService() {
 	}
 
 	private fun onHandleIntent( intent: Intent? ){
-		startActivity( Intent( Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS ) )
+
 	}
 
 }

@@ -36,5 +36,6 @@
     <color name="material_purple">#6C77C7</color>
 
     <color name="elevated_black">#121212</color>
+    <color name="grey">#878787</color>
 
 </resources>

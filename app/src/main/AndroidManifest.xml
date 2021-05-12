@@ -17,7 +17,9 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".activity.AddEventActivity" />
         <activity android:name=".activity.InfoActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +28,7 @@
         </activity>
 
         <service
-            android:name=".MyIntentService"
+            android:name=".service.MyIntentService"
             android:icon="@mipmap/ic_launcher_new"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_JOB_SERVICE"

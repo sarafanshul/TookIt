@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
 import com.projectdelta.medsapp.adapter.RecyclerViewInfoAdapter
-import com.projectdelta.medsapp.adapter.SwipeToDelete
+import com.projectdelta.medsapp.library.SwipeToDelete
 import com.projectdelta.medsapp.data.UserData
 import com.projectdelta.medsapp.R
-import com.projectdelta.medsapp.libary.StatesRecyclerViewAdapter
+import com.projectdelta.medsapp.library.StatesRecyclerViewAdapter
 import com.projectdelta.medsapp.viewModel.InfoViewModel
 import kotlinx.android.synthetic.main.activity_info.*
 
@@ -39,9 +39,9 @@ class InfoActivity : AppCompatActivity() {
 		setView( )
 
 		var itemTouchHelper = ItemTouchHelper(
-			SwipeToDelete(
-				adapter
-			)
+				SwipeToDelete(
+						adapter
+				)
 		)
 		itemTouchHelper.attachToRecyclerView( info_rv_main )
 
@@ -75,7 +75,7 @@ class InfoActivity : AppCompatActivity() {
 		info_rv_main.layoutManager = LinearLayoutManager( this )
 		adapter = RecyclerViewInfoAdapter()
 		val emptyView = layoutInflater.inflate(R.layout.empty_view_layout , info_rv_main , false)
-		emptyView.findViewById<MaterialTextView>(R.id.empty_view_text_view).setTextColor( R.attr.theme_text )
+		emptyView.findViewById<MaterialTextView>(R.id.empty_view_text_view).setTextColor( resources.getColor(R.color.grey) )
 		val statesRecyclerViewAdapter = StatesRecyclerViewAdapter( adapter , emptyView , emptyView , emptyView )
 		info_rv_main.adapter = statesRecyclerViewAdapter
 		adapter.context = this@InfoActivity

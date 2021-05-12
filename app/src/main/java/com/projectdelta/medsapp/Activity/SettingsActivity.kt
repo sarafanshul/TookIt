@@ -1,8 +1,11 @@
 package com.projectdelta.medsapp.activity
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
 import com.projectdelta.medsapp.R
 import com.projectdelta.medsapp.util.NotificationUtil
@@ -25,7 +28,6 @@ class SettingsActivity : AppCompatActivity() ,
 				.replace(R.id.settings, SettingsFragment())
 				.commit()
 		}
-
 
 	}
 
@@ -62,6 +64,14 @@ class SettingsActivity : AppCompatActivity() ,
 			}
 			NotificationUtil.startNotifications(this ,workTag , time )
 		}
+		if( key!! == "night_mode" ){
+			if( sharedPreferences?.getBoolean(key , false) == true ){
+				AppCompatDelegate.setDefaultNightMode( AppCompatDelegate.MODE_NIGHT_YES )
+			}else {
+				AppCompatDelegate.setDefaultNightMode( AppCompatDelegate.MODE_NIGHT_NO )
+				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+			}
+		}
 	}
 
 
@@ -69,6 +79,14 @@ class SettingsActivity : AppCompatActivity() ,
 	class SettingsFragment : PreferenceFragmentCompat() {
 		override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
 			setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+			val night_mode = findPreference<SwitchPreference>("night_mode")
+			val mode = context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)
+			when (mode) {
+				Configuration.UI_MODE_NIGHT_YES -> { night_mode?.isChecked = true }
+				Configuration.UI_MODE_NIGHT_NO -> { night_mode?.isChecked = false }
+				Configuration.UI_MODE_NIGHT_UNDEFINED -> { night_mode?.isChecked = false }
+			}
 		}
 	}
 

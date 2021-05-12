@@ -58,34 +58,42 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 			.setNegativeButton("ONCE"){_ ,_ -> deleteOne(viewHolder) }
 			.setNeutralButton("CANCEL"){_ ,_ -> notifyDataSetChanged() } // swipe glitch
 			.create()
-
 		dialog.show()
 	}
 
 	private var removed_pos = 0
 	private var removed_item : String = "" ; private var removed_time : Long = 0
-	fun deleteOne( viewHolder: RecyclerView.ViewHolder ){
+
+	private fun deleteOne( viewHolder: RecyclerView.ViewHolder ){
 		// cache
+		var isRemoved = true
 		removed_pos = viewHolder.adapterPosition
 		removed_item = this.data.list[removed_pos].first
 		removed_time = this.data.list[removed_pos].second
 
-		this.data.list.removeAt(removed_pos)
+		data.list.removeAt(removed_pos)
 
 		notifyItemRemoved( removed_pos )
 
 		Snackbar.make( viewHolder.itemView , "${removed_item.capitalize()} Removed." ,Snackbar.LENGTH_LONG ).apply {
 			setAction("UNDO") {
+				if( itemCount == 0 ){ // https://stackoverflow.com/questions/35653439/recycler-view-inconsistency-detected-invalid-view-holder-adapter-positionviewh
+					data.list.clear()
+					notifyDataSetChanged()
+				}
 				data.list.add(removed_pos, Pair( removed_item , removed_time ))
 				notifyItemInserted(removed_pos)
+				isRemoved = false
 			}
 			animationMode = Snackbar.ANIMATION_MODE_SLIDE
 			anchorView = viewHolder.itemView.rootView.findViewById(R.id.info_fab_add) // for on top of efab
 		}.show()
 
+		if( isRemoved )
+			UserDatabaseManager.updateSingleData( context , data )
 	}
 
-	fun deleteAll( viewHolder: RecyclerView.ViewHolder ){
+	private fun deleteAll( viewHolder: RecyclerView.ViewHolder ){
 		removed_pos = viewHolder.adapterPosition
 		removed_item = this.data.list[removed_pos].first
 		removed_time = this.data.list[removed_pos].second
@@ -96,6 +104,7 @@ class RecyclerViewInfoAdapter() : RecyclerView.Adapter<RecyclerViewInfoAdapter.I
 			animationMode = Snackbar.ANIMATION_MODE_SLIDE
 			anchorView = viewHolder.itemView.rootView.findViewById(R.id.info_fab_add) // for on top of efab
 		}.show()
+		notifyItemRemoved( removed_pos )
 	}
 
 }

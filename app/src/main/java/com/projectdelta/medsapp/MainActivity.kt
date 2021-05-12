@@ -6,6 +6,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PowerManager
+import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +19,8 @@ import com.projectdelta.medsapp.adapter.RecyclerViewMainAdapter
 import com.projectdelta.medsapp.adapter.RecyclerViewTodayAdapter
 import com.projectdelta.medsapp.adapter.RecyclerItemClickListenr
 import com.projectdelta.medsapp.data.UserData
-import com.projectdelta.medsapp.libary.StatesRecyclerViewAdapter
+import com.projectdelta.medsapp.library.StatesRecyclerViewAdapter
+import com.projectdelta.medsapp.service.MyIntentService
 import com.projectdelta.medsapp.util.NotificationUtil
 import com.projectdelta.medsapp.util.fromMilliSecondsToString
 import com.projectdelta.medsapp.util.getDate
@@ -40,14 +43,17 @@ class MainActivity : AppCompatActivity() {
 		NotificationUtil.createNotificationChannel(applicationContext )
 
 		setTheme(R.style.Theme_MedsApp)
+
+		Intent( this , MyIntentService::class.java ).also {
+			startService( it )
+		}
+
 		setContentView(R.layout.activity_main)
 
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-			val pm : PowerManager = getSystemService(AppCompatActivity.POWER_SERVICE) as PowerManager
-			if (!pm.isIgnoringBatteryOptimizations( getPackageName() )) {
-				Intent( this , MyIntentService::class.java ).also {
-					startService( it )
-				}
+			val pm : PowerManager = getSystemService(POWER_SERVICE) as PowerManager
+			if (!pm.isIgnoringBatteryOptimizations( packageName )) {
+				startActivity( Intent( Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS ) )
 			}
 		}
 

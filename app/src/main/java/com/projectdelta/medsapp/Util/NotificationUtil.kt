@@ -64,9 +64,7 @@ object NotificationUtil {
 	}
 
 	 fun startNotifications( context : Context , tag : String , interval : Long ){
-
-//		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(interval , TimeUnit.MILLISECONDS)
-		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(15 , TimeUnit.MINUTES)
+		 val notificationWorkRequest = PeriodicWorkRequestBuilder<NotificationWorker>(interval , TimeUnit.MINUTES)
 			.addTag(tag)
 			.build()
 		 WorkManager.getInstance(context).enqueueUniquePeriodicWork(
