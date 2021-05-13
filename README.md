@@ -4,9 +4,9 @@ Intuitive visual interface with easy-to-use medication reminder
 ![](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github) ![](https://img.shields.io/badge/Made%20with-Kotlin-1f425f.svg)
 
 ## Preview
-![](\assets\MockUps\previewed_1.png)
+![](/assets/MockUps/previewed_1.png)
 
-![](\assets\MockUps\merge_from_ofoct.jpg)
+![](/assets/MockUps/merge_from_ofoct.jpg)
 
 ### Background Features
 - Firebase support to access your data anywhere
